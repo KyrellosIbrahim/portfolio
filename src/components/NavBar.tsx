@@ -1,31 +1,44 @@
-import {ReactNode, useState, useEffect } from 'react';
-import { FaPoo, } from 'react-icons/fa';
-import { IoDocumentTextOutline } from "react-icons/io5";
+import { useState, useEffect } from 'react';
+import { LuMenu, LuX } from "react-icons/lu";
 
 
-
-
-const NavBar = () => {
-  return (
-    <div className='fixed top-0 w-screen h-16 m-0 flex flex-row bg-emerald-700 text-black shadow'>
-      <i>A</i>
-        <i>B</i>
-        <i>C</i>
-        <i>D</i>
-      <NavBarIcon icon={<FaPoo size="28" />} text="Trash" />
-      <NavBarIcon icon={<IoDocumentTextOutline size='28'/>} text = "Resumé"/>
-    </div>
-  );
+const NavLinks = () => {
+    return (
+        <>
+            <a href={"#experience"}>Experience</a>
+            <a href={"#projects"}>Projects</a>
+            <a href={"#contact"}>Contact</a>
+            <a href={"Resume"}>Resume</a>
+        </>
+    );
 };
 
-const NavBarIcon = ({ icon, text }) => (
-    <div className="navbar-icon group relative">
-      {icon}
-      <span className="navbar-tooltip">
-      {text}
-    </span>
-    </div>
-);
+const NavBar = () => {
+    const [isOpen, setIsOpen] = useState(false); // menu
+    const toggleNavBar = () => { // toggle menu
+        setIsOpen(!isOpen);
+    };
+    return (
+        <>
+    <nav className="flex w-1/3 justify-end">
+        <div></div>
+        <div className="hidden justify-between md:flex w-full">
+            <NavLinks/>
+        </div>
+        <div className="md:hidden">
+            <button onClick={toggleNavBar}>{isOpen ? <LuX /> : <LuMenu />}
+            </button>
+        </div>
+    </nav>
+    {isOpen && (
+        <div className="flex basis-full flex-col items-center mx-auto">
+            <NavLinks/>
+        </div>
+    )}
+        </>
+    );
+};
+
 
 
 export default NavBar;
