@@ -9,11 +9,13 @@
         rounded-3xl hover:rounded-xl transition-all duration-200 ease-linear
         cursor-pointer;
     }
+
     .navbar-tooltip {
         @apply absolute left-14 top-1/2 -translate-y-1/2 p-2 m-2 min-w-max
         rounded-md shadow-md text-white bg-gray-900 text-xs font-bold
         transition-all duration-100 scale-0 origin-left opacity-0;
     }
+
     /* shows the tooltip on hover */
     .navbar-icon:hover .navbar-tooltip {
         @apply scale-100 opacity-100 left-16;
