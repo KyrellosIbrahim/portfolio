@@ -20,4 +20,9 @@
     .navbar-icon:hover .navbar-tooltip {
         @apply scale-100 opacity-100 left-16;
     }
+
+    /* background image that doesn't move with scroll */
+    body {
+        @apply bg-scroll bg-neutral-100 dark:bg-[#242424] bg-center bg-cover
+    }
 }
