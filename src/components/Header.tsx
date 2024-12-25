@@ -33,7 +33,9 @@ const NavLinks = ({ className = "" }) => {
                 <a href="#experience" className="px-4 hover:text-blue-700 transition-colors">Experience</a>
                 <a href="#projects" className="px-4 hover:text-blue-700 transition-colors">Projects</a>
                 <a href="#contact" className="px-4 hover:text-blue-700 transition-colors">Contact</a>
-                <a href="Resume" className="px-4 hover:text-blue-700 transition-colors">Resume</a>
+                <a href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
+                   target="_blank" rel="noopener noreferrer"
+                   className="px-4 hover:text-blue-700 transition-colors">Resume</a>
             </div>
         </div>
     );
