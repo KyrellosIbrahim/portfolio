@@ -29,13 +29,12 @@ const NavLinks = ({ className = "" }) => {
             >
                 {darkMode ? <LuSun size={16} /> : <LuMoon size={16} />}
             </motion.button>
-            <div className="flex items-center lg:space-x-2">
-                <a href="#experience" className="px-4 hover:text-blue-700 transition-colors">Experience</a>
-                <a href="#projects" className="px-4 hover:text-blue-700 transition-colors">Projects</a>
-                <a href="#contact" className="px-4 hover:text-blue-700 transition-colors">Contact</a>
+            <div className="flex items-center md:space-x-2">
+                <a href="#projects" className="px-4 hover:text-[#46d85b] transition-colors">Projects</a>
+                <a href="#contact" className="px-4 hover:text-[#46d85b] transition-colors">Contact</a>
                 <a href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
                    target="_blank" rel="noopener noreferrer"
-                   className="px-4 hover:text-blue-700 transition-colors">Resume</a>
+                   className="px-4 hover:text-[#46d85b] transition-colors">Resume</a>
             </div>
         </div>
     );
@@ -60,12 +59,12 @@ const Header = () => {
 
                 <nav className="flex items-center">
                     {/* Desktop Navigation */}
-                    <div className="hidden lg:block">
+                    <div className="hidden md:block">
                         <NavLinks />
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="lg:hidden">
+                    <div className="md:hidden">
                         <motion.button
                             onClick={toggleNavBar}
                             initial="closed"
@@ -87,7 +86,7 @@ const Header = () => {
                 <AnimatePresence mode="wait">
                     {isOpen && (
                         <motion.div
-                            className="w-full lg:hidden"
+                            className="w-full md:hidden"
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
