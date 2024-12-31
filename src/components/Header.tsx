@@ -24,7 +24,8 @@ const NavLinks = ({ className = "" }) => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleDarkMode}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-white transition-colors dark:bg-white dark:text-black"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-white
+                transition-colors ease-in-out dark:bg-white dark:text-black"
                 aria-label="Toggle dark mode"
             >
                 {darkMode ? <LuSun size={16} /> : <LuMoon size={16} />}
@@ -53,9 +54,15 @@ const Header = () => {
     };
 
     return (
-        <header className="sticky top-0 z-[1] mx-auto w-full max-w-7xl font-Sans font-bold uppercase text-text-primary backdrop-blur-[100px] dark:text-white">
-            <div className="flex flex-wrap items-center justify-between border-b border-gray-500 p-8">
-                <a href="/" className="text-2xl font-semibold">Kyrellos Ibrahim</a>
+        <header className="sticky top-0 z-[1] mx-auto w-full max-w-7xl font-Sans font-bold uppercase text-text-primary
+           bg-neutral-100 dark:bg-[#242424] dark:text-white">
+            <div className="flex flex-wrap items-center justify-between p-8">
+                <a
+                    onClick={(e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    href="/" className="text-2xl font-semibold">Kyrellos Ibrahim</a>
 
                 <nav className="flex items-center">
                     {/* Desktop Navigation */}

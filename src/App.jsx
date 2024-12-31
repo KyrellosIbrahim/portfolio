@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Intro from "./components/Intro";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
         <>
             <Header />
             <Intro />
+            <Experience />
             <Projects />
         </>
 

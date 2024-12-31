@@ -15,7 +15,7 @@ const Intro = () => {
                     className="pl-2.5 inline-block cursor-default"
                     animate={{rotate: 0}}
                     whileHover={{ // waving animation on hover
-                    rotate: [0, -25, 25, -25],  // Start from 0, go to -45, then oscillate
+                    rotate: [0, -10, 10, -10],  // Start from 0, go to -10, then oscillate
                     transition: {
                     times: [0, 0.33, 0.66, 1],
                     duration: 1,
