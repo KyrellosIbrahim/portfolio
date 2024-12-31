@@ -10,7 +10,7 @@ const Intro = () => {
                 <span
                 className="text-5xl  md:text-6xl lg:text-7xl xl:text-8xl font-semibold flex flex-col">
                     Hi,
-                <span>I'm <span className="text-[#46d85b] font-bold">Kyrellos</span>
+                <span>I'm <span className="text-[#02D0B3] font-bold">Kyrellos</span>
                 <motion.span
                     className="pl-2.5 inline-block cursor-default"
                     animate={{rotate: 0}}
@@ -44,7 +44,7 @@ const Intro = () => {
                         <motion.button
                             whileHover={{scale: 1.1}}
                             whileTap={{scale: 0.9}}
-                            className="bg-[#46d85b] text-white rounded-full p-2 mx-2"
+                            className="bg-[#02D0B3] text-white rounded-full p-2 mx-2"
                         >
                             <FaGithub size={24}/>
                         </motion.button>
@@ -59,7 +59,7 @@ const Intro = () => {
                         <motion.button
                             whileHover={{scale: 1.1}}
                             whileTap={{scale: 0.9}}
-                            className="bg-[#46d85b] text-white rounded-full p-2 mx-2"
+                            className="bg-[#02D0B3] text-white rounded-full p-2 mx-2"
                         >
                             <FaLinkedinIn size={24}/>
                         </motion.button>
@@ -74,7 +74,7 @@ const Intro = () => {
                         <motion.button
                             whileHover={{scale: 1.1}}
                             whileTap={{scale: 0.9}}
-                            className="bg-[#46d85b] text-white rounded-full p-2 mx-2"
+                            className="bg-[#02D0B3] text-white rounded-full p-2 mx-2"
                         >
                             <FaRegFile size={24}/>
                         </motion.button>

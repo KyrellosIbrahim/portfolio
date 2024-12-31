@@ -5,7 +5,7 @@
 @layer components {
     .icon-tooltip {
         @apply absolute left-1/2 top-full -translate-x-1/2 px-3 py-1
-        rounded-md shadow-md text-white bg-gray-900 dark:bg-[#46d85b] text-sm font-medium
+        rounded-md shadow-md text-white bg-gray-900 dark:bg-[#02D0B3] text-sm font-medium
         transition-transform duration-200 scale-0 opacity-0 origin-top;
         white-space: nowrap;
         z-index: 10;
