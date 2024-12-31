@@ -1,5 +1,5 @@
-import logoDark from '../assets/Belmont University Logo.png';
-import logoLight from '../assets/Belmont University Logo Vertical Reversed.png'
+// @ts-ignore
+import logo from '../assets/Belmont-University-Logo-Vertical-Reversed.png'
 
 const Experience = () => {
     return (
@@ -14,17 +14,11 @@ const Experience = () => {
                     rel="noopener noreferrer"
                     className="group relative flex flex-row items-center gap-4"
                 >
-                    <picture>
-                        <source
-                            srcSet="logoDark"
-                            media="(prefers-color-scheme: dark)"
-                        />
-                        <img
-                            src="logoLight"
+                    <img
+                            src={logo}
                             alt="Belmont University Logo"
                             className="object-scale-down max-h-28"
-                        />
-                    </picture>
+                    />
                     <div className="flex flex-col pl-1">
                         <h2
                             className="text-black dark:text-white font-semibold text-xl pb-2">
