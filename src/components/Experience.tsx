@@ -1,7 +1,7 @@
 // @ts-ignore
 import logo from '../assets/Belmont-University-Logo-Vertical-Reversed.png'
 import { useEffect, useRef, useState } from 'react';
-
+import {motion} from "framer-motion";
 const Experience = () => {
     const [isVisible, setIsVisible] = useState(false);
     const elementRef = useRef(null);
@@ -50,10 +50,12 @@ const Experience = () => {
                     rel="noopener noreferrer"
                     className="group relative flex flex-row items-center gap-4"
                 >
-                    <img
+                    <motion.img
                         src={logo}
                         alt="Belmont University Logo"
                         className="object-scale-down max-h-32 rounded-full"
+                        whileHover={{scale: 1.03}}
+                        whileTap={{scale: 0.97}}
                     />
                     <div className="flex flex-col pl-1">
                         <h2 className="text-black dark:text-white font-semibold text-xl pb-2">
