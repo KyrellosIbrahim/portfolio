@@ -36,7 +36,7 @@ const Experience = () => {
     return (
         <div className="justify-center flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[40vh] px-8 lg:px-36">
             <span className="text-5xl md:text-6xl justify-center font-medium pb-16">
-                Here is my <span className="text-[#02D0B3] font-bold">experience</span>
+                Here is my <span className="text-[#01a7ff] font-bold">experience</span>
             </span>
             <div
                 ref={elementRef}

@@ -5,7 +5,7 @@
 @layer components {
     .icon-tooltip {
         @apply absolute left-1/2 top-full -translate-x-1/2 px-3 py-1
-        rounded-md shadow-md text-white bg-gray-900 dark:bg-[#02D0B3] text-sm font-medium
+        rounded-md shadow-md text-white bg-gray-900 dark:bg-[#01a7ff] text-sm font-medium
         transition-transform duration-200 scale-0 opacity-0 origin-top;
         white-space: nowrap;
         z-index: 10;
@@ -19,6 +19,10 @@
     .icon-button {
         @apply bg-[#0084ff] text-white rounded-full p-2;
     }
+    .modal-section .icon-tooltip {
+        @apply bg-gray-900 dark:bg-gray-900
+    }
+
     body {
         @apply bg-scroll bg-neutral-100 dark:bg-[#242424] bg-center bg-cover transition-colors duration-150;
     }
