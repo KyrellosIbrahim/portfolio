@@ -26,4 +26,7 @@
     body {
         @apply bg-scroll bg-neutral-100 dark:bg-[#242424] bg-center bg-cover transition-colors duration-150;
     }
+    .fade-in {
+        opacity: 1 !important;
+    }
 }
