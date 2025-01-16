@@ -2,7 +2,9 @@
 import MunchFeedPicture from "../assets/Food.jpg";
 // @ts-ignore
 import Maze from "../assets/Black Maze Wall Photo.jpg";
-import {FaReact, FaJava, FaPython } from "react-icons/fa";
+// @ts-ignore
+import bookshelf from "../assets/Bookshelf.jpg"
+import {FaReact, FaJava, FaPython, FaGithub } from "react-icons/fa";
 import { SiTypescript, SiXcode} from "react-icons/si";
 import { RiFirebaseFill, RiCloseLargeFill } from "react-icons/ri";
 import {AnimatePresence, motion} from "framer-motion";
@@ -20,7 +22,8 @@ const Projects = () => {
             description: "An interactive social media app where you can share your favorite foods with your friends.",
             icons: [<FaReact size={24}/>, <SiTypescript size={24}/>, <RiFirebaseFill size={24}/>, <SiXcode size={24}/>],
             detailedDescription: "This is a social media app where you can upload pictures of your favorite meals" +
-                " for the day, share it with your friends, and leave comments on each other's posts and profiles."
+                " for the day, share it with your friends, and leave comments on each other's posts and profiles.",
+            link: "https://github.com/minash23/MunchFeed"
         },
         {
             id: 2,
@@ -29,16 +32,18 @@ const Projects = () => {
             description: "A Java program that uses A* to find the shortest path in a maze.",
             icons: [<FaJava size={24}/>],
             detailedDescription: "This Java program takes an input txt file and uses the A* algorithm to solve it, if possible. " +
-                "The maze is represented as a grid, and the program calculates the optimal path from the start point to the end point."
+                "The maze is represented as a grid, and the program calculates the optimal path from the start point to the end point.",
+            link: "https://github.com/KyrellosIbrahim/mazeGame"
         },
         {
             id: 3,
             name: "File Organization Script",
-            Image: "TODO",
+            image: bookshelf,
             description: "A Python script that organizes files based on their type.",
             icons: [<FaPython size={24}/>],
             detailedDescription: "This Python script organizes files in a directory based on their type. The script parses " +
-                "the Downloads folder and moves files to their respective folders based on their file extension."
+                "the Downloads folder and moves files to their respective folders based on their file extension.",
+            link: "https://github.com/KyrellosIbrahim/ImageFileSorter"
         }
     ];
 
@@ -95,7 +100,7 @@ const Projects = () => {
                             animate={{opacity: 1, scale: 1}}
                             exit={{opacity: 0, scale: 0}}
                             transition={{duration: 0.25}}
-                            className="bg-white dark:bg-[#242426] rounded-lg shadow-lg p-8 max-w-lg w-full h-[60vh]">
+                            className="relative bg-white dark:bg-[#242426] rounded-lg shadow-lg p-8 max-w-lg w-full h-[63vh]">
                             <div className="flex justify-between items-center">
                                 <h2 className="text-2xl font-semibold">{selectedProject.name}</h2>
                                 <button
@@ -134,7 +139,7 @@ const Projects = () => {
                                 {selectedProject.id === 2 && (
                                     <>
                                         <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                                            <FaJava size={30} className="text-[#5382a1]"/>
+                                            <FaJava size={36} className="text-[#5382a1]"/>
                                             <div className="icon-tooltip">Java</div>
                                         </motion.div>
                                     </>
@@ -149,6 +154,19 @@ const Projects = () => {
                                 )}
                             </div>
                             <p className="text-black dark:text-white">{selectedProject.detailedDescription}</p>
+                            <a
+                                href={selectedProject.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <motion.button
+                                    className=" absolute bottom-8 right-8 pt-4"
+                                    whileHover={{scale: 1.1}}
+                                    whileTap={{scale: 0.9}}
+                                >
+                                    <FaGithub size={30}/>
+                                </motion.button>
+                            </a>
                         </motion.div>
                     </motion.div>
                 </AnimatePresence>
