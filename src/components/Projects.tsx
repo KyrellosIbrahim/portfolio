@@ -164,7 +164,7 @@ const Projects = () => {
                                     whileHover={{scale: 1.1}}
                                     whileTap={{scale: 0.9}}
                                 >
-                                    <FaGithub size={30}/>
+                                    <FaGithub size={36}/>
                                 </motion.button>
                             </a>
                         </motion.div>
