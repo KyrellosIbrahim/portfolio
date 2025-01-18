@@ -29,7 +29,7 @@ const Projects = () => {
             id: 2,
             name: "Rat Maze Solver",
             image: Maze,
-            description: "A Java program that uses A* to find the shortest path in a maze.",
+            description: "A Java program that uses A* to find the shortest possible path in a maze.",
             icons: [<FaJava size={24}/>],
             detailedDescription: "This Java program takes an input txt file and uses the A* algorithm to solve it, if possible. " +
                 "The maze is represented as a grid, and the program calculates the optimal path from the start point to the end point.",
@@ -39,7 +39,7 @@ const Projects = () => {
             id: 3,
             name: "File Organization Script",
             image: bookshelf,
-            description: "A Python script that organizes files based on their type.",
+            description: "A Python script that parses folders and organizes files based on their type.",
             icons: [<FaPython size={24}/>],
             detailedDescription: "This Python script organizes files in a directory based on their type. The script parses " +
                 "the Downloads folder and moves files to their respective folders based on their file extension.",
@@ -49,7 +49,7 @@ const Projects = () => {
 
     return (
         <div
-            className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[20vh] px-8 lg:px-36 mb-[100vh]">
+            className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[20vh] px-8 lg:px-36 mb-[80vh]">
             <span className="text-5xl md:text-6xl justify-center font-medium">
                 Here are my <span className="text-[#01a7ff] font-bold">projects</span>
             </span>
