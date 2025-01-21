@@ -40,7 +40,7 @@ const Experience = () => {
             </span>
             <div
                 ref={elementRef}
-                className={`pb-4 flex flex-row items-center transition-opacity duration-1000 ${
+                className={`pb-4 flex flex-wrap items-center gap-4 transition-opacity duration-1000 ${
                     isVisible ? 'opacity-100' : 'opacity-0'
                 }`}
             >
@@ -53,7 +53,7 @@ const Experience = () => {
                     <motion.img
                         src={logo}
                         alt="Belmont University Logo"
-                        className="object-scale-down max-h-32 rounded-full"
+                        className="object-scale-down max-h-20 sm:max-h-24 md:max-h-32 rounded-full flex-shrink-0"
                         whileHover={{scale: 1.03}}
                         whileTap={{scale: 0.97}}
                     />

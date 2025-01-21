@@ -132,7 +132,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                     <span>
                         I'm <span className="text-[#01a7ff] font-bold">Kyrellos</span>
                         <motion.span
-                            className="pl-2.5 inline-block cursor-default"
+                            className="pl-2.5 inline-block cursor-default pt-2"
                             animate={{rotate: 0}}
                             whileHover={{
                                 rotate: [0, -10, 10, -10],
