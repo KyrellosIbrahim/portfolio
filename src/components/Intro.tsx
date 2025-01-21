@@ -354,7 +354,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                     >
                                         <h3 className="text-2xl font-semibold mb-6 text-[#01a7ff]">Technologies I Work
                                             With</h3>
-                                        <div className="grid grid-cols-3 gap-5 p-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-4">
                                             {icons.map((icon, index) => (
                                                 <motion.div
                                                     key={icon.id}

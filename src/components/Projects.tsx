@@ -13,7 +13,6 @@ import {useState} from "react";
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null);
 
-    // Project data is added here
     const projects = [
         {
             id: 1,
@@ -47,132 +46,143 @@ const Projects = () => {
         }
     ];
 
+    const renderTechIcons = (projectId) => {
+        switch(projectId) {
+            case 1:
+                return (
+                    <>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <FaReact size={36} className="text-[#26d9fd]"/>
+                            <div className="icon-tooltip">React Native</div>
+                        </motion.div>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <SiTypescript size={36} className="text-[#3178c6]"/>
+                            <div className="icon-tooltip">TypeScript</div>
+                        </motion.div>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <RiFirebaseFill size={36} className="text-[#ffcb2d]"/>
+                            <div className="icon-tooltip">Firebase</div>
+                        </motion.div>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <SiXcode size={36} className="text-[#0f8de8]"/>
+                            <div className="icon-tooltip">Xcode</div>
+                        </motion.div>
+                    </>
+                );
+            case 2:
+                return (
+                    <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                        <FaJava size={36} className="text-[#5382a1]"/>
+                        <div className="icon-tooltip">Java</div>
+                    </motion.div>
+                );
+            case 3:
+                return (
+                    <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                        <FaPython size={30} className="text-[#306998]"/>
+                        <div className="icon-tooltip">Python</div>
+                    </motion.div>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <section id="projects" className="projects-section">
-        <div
-            className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[20vh] px-8 lg:px-36 xl:pr-80 mb-[80vh]">
-            <span className="text-5xl md:text-6xl justify-center font-medium">
-                Here are my <span className="text-[#01a7ff] font-bold">projects</span>
-            </span>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-                {projects.map((project) => (
-                    <motion.div
-                        key={project.id}
-                        initial={{opacity: 0, y: 20}}
-                        whileInView={{
-                            opacity: 1,
-                            y: 50,
-                            transition: {
-                                duration: 0.5,
-                                ease: "easeOut"
-                            }
-                        }}
-                        viewport={{once: false, margin: "-100px"}}
-                        whileHover={{scale: 1.02}}
-                        onClick={() => setSelectedProject(project)}
-                        className="bg-gray-100 dark:bg-[#242426] rounded-lg shadow-lg overflow-hidden border
-                        dark:border-neutral-800 p-4 cursor-pointer"
-                    >
-                        <img
-                            src={project.image}
-                            alt={project.name}
-                            className="w-full h-64 xl:h-96 object-cover"
-                        />
-                        <div className="p-4">
-                            <h4 className="text-2xl font-semibold">{project.name}</h4>
-                            <p className="text-gray-600 dark:text-gray-300 mt-2">{project.description}</p>
-                            <div className="mt-2 flex flex-row space-x-3">{project.icons}</div>
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-            {/* modal */}
-            {selectedProject && (
-                <AnimatePresence>
-                    <motion.div
-                        onClick={() => setSelectedProject(null)}
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        transition={{duration: 0.25}}
-                        className="fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center z-50 modal-section">
+            <div className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[20vh] px-8 lg:px-36 xl:pr-80 mb-[80vh]">
+                <span className="text-5xl md:text-6xl justify-center font-medium">
+                    Here are my <span className="text-[#01a7ff] font-bold">projects</span>
+                </span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                    {projects.map((project) => (
                         <motion.div
-                            onClick={(e) => e.stopPropagation()} // Prevent click on modal from closing it
-                            initial={{opacity: 0, scale: 0}}
-                            animate={{opacity: 1, scale: 1}}
-                            exit={{opacity: 0, scale: 0}}
-                            transition={{duration: 0.25}}
-                            className="relative bg-white dark:bg-[#242426] rounded-lg shadow-lg p-8 max-w-lg w-full h-[63vh]">
-                            <div className="flex justify-between items-center">
-                                <h2 className="text-2xl font-semibold">{selectedProject.name}</h2>
-                                <button
-                                    onClick={() => setSelectedProject(null)}
-                                    className="text-gray-500 hover:text-gray-700
-                            dark:text-gray-300 dark:hover:text-gray-100 font-semibold">
-                                    <RiCloseLargeFill/>
-                                </button>
-                            </div>
+                            key={project.id}
+                            initial={{opacity: 0, y: 20}}
+                            whileInView={{
+                                opacity: 1,
+                                y: 50,
+                                transition: {
+                                    duration: 0.5,
+                                    ease: "easeOut"
+                                }
+                            }}
+                            viewport={{once: false, margin: "-100px"}}
+                            whileHover={{scale: 1.02}}
+                            onClick={() => setSelectedProject(project)}
+                            className="bg-gray-100 dark:bg-[#242426] rounded-lg shadow-lg overflow-hidden border
+                            dark:border-neutral-800 p-4 cursor-pointer"
+                        >
                             <img
-                                src={selectedProject.image}
-                                alt={selectedProject.name}
-                                className="w-full h-64 object-cover mt-4 shadow-md shadow-neutral-600 dark:shadow-neutral-950"
+                                src={project.image}
+                                alt={project.name}
+                                className="w-full h-64 xl:h-96 object-cover"
                             />
-                            <div className="my-3 flex flex-row space-x-3.5">
-                                {selectedProject.id === 1 && (
-                                    <>
-                                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                                            <FaReact size={36} className="text-[#26d9fd]"/>
-                                            <div className="icon-tooltip">React Native</div>
-                                        </motion.div>
-                                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                                            <SiTypescript size={36} className="text-[#3178c6]"/>
-                                            <div className="icon-tooltip">TypeScript</div>
-                                        </motion.div>
-                                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                                            <RiFirebaseFill size={36} className="text-[#ffcb2d]"/>
-                                            <div className="icon-tooltip">Firebase</div>
-                                        </motion.div>
-                                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                                            <SiXcode size={36} className="text-[#0f8de8]"/>
-                                            <div className="icon-tooltip">Xcode</div>
-                                        </motion.div>
-                                    </>
-                                )}
-                                {selectedProject.id === 2 && (
-                                    <>
-                                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                                            <FaJava size={36} className="text-[#5382a1]"/>
-                                            <div className="icon-tooltip">Java</div>
-                                        </motion.div>
-                                    </>
-                                )}
-                                {selectedProject.id === 3 && (
-                                    <>
-                                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                                            <FaPython size={30} className="text-[#306998]"/>
-                                            <div className="icon-tooltip">Python</div>
-                                        </motion.div>
-                                    </>
-                                )}
+                            <div className="p-4">
+                                <h4 className="text-2xl font-semibold">{project.name}</h4>
+                                <p className="text-gray-600 dark:text-gray-300 mt-2">{project.description}</p>
+                                <div className="mt-2 flex flex-row space-x-3">{project.icons}</div>
                             </div>
-                            <p className="text-black dark:text-white">{selectedProject.detailedDescription}</p>
-                            <a
-                                href={selectedProject.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <motion.button
-                                    className=" absolute bottom-8 right-8 pt-4 xl:pt-0"
-                                    whileHover={{scale: 1.1}}
-                                    whileTap={{scale: 0.9}}
-                                >
-                                    <FaGithub size={36}/>
-                                </motion.button>
-                            </a>
                         </motion.div>
-                    </motion.div>
-                </AnimatePresence>
-            )}
-        </div>
+                    ))}
+                </div>
+
+                {selectedProject && (
+                    <AnimatePresence>
+                        <motion.div
+                            onClick={() => setSelectedProject(null)}
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            transition={{duration: 0.25}}
+                            className="fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center z-50 modal-section">
+                            <motion.div
+                                onClick={(e) => e.stopPropagation()}
+                                initial={{opacity: 0, scale: 0}}
+                                animate={{opacity: 1, scale: 1}}
+                                exit={{opacity: 0, scale: 0}}
+                                transition={{duration: 0.25}}
+                                className="relative bg-white dark:bg-[#242426] rounded-lg shadow-lg p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className="text-2xl font-semibold">{selectedProject.name}</h2>
+                                    <button
+                                        onClick={() => setSelectedProject(null)}
+                                        className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 font-semibold">
+                                        <RiCloseLargeFill/>
+                                    </button>
+                                </div>
+
+                                <img
+                                    src={selectedProject.image}
+                                    alt={selectedProject.name}
+                                    className="w-full h-64 object-cover shadow-md shadow-neutral-600 dark:shadow-neutral-950 mb-4"
+                                />
+
+                                <p className="text-black dark:text-white mb-6">
+                                    {selectedProject.detailedDescription}
+                                </p>
+
+                                <div className="flex justify-between items-center">
+                                    <div className="flex space-x-3.5">
+                                        {renderTechIcons(selectedProject.id)}
+                                    </div>
+                                    <a
+                                        href={selectedProject.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <motion.button
+                                            whileHover={{scale: 1.1}}
+                                            whileTap={{scale: 0.9}}
+                                        >
+                                            <FaGithub size={36}/>
+                                        </motion.button>
+                                    </a>
+                                </div>
+                            </motion.div>
+                        </motion.div>
+                    </AnimatePresence>
+                )}
+            </div>
         </section>
     );
 };

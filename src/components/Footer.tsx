@@ -1,6 +1,7 @@
 import {motion} from "framer-motion";
 
 const Footer = ({setModalOpen}) => {
+    const currentYear = new Date().getFullYear();
     const footer = [
         {
             id: 1,
@@ -29,17 +30,17 @@ const Footer = ({setModalOpen}) => {
     ];
 
     return (
-        <div className="w-full bg-[#242424] items-center justify-center content-center flex flex-col h-60">
+        <div className="w-full bg-[#242424] items-center justify-center content-center flex flex-col min-h-60">
             <div className="w-full flex flex-col text-white text-center p-4">
                 <div className="w-full flex flex-row text-white justify-center">
-                    <div className="w-6/12 flex justify-between">
+                    <div className="w-6/12 flex justify-between flex-wrap">
                         {footer.map((foot) => (
                             <motion.a
                                 key={foot.id}
                                 href={foot.link}
                                 target={foot.link !== "#" ? "_blank" : ""}
                                 rel={foot.link !== "#" ? "noopener noreferrer" : ""}
-                                className="hover:text-[#01a7ff]"
+                                className="hover:text-[#01a7ff] p-4"
                                 onClick={foot.onClick}
                             >
                                 {foot.text}
@@ -48,7 +49,7 @@ const Footer = ({setModalOpen}) => {
                     </div>
                 </div>
                 <span className="justify-center mt-12">
-                    Copyright © 2025 Kyrellos Ibrahim
+                    Copyright © {currentYear} Kyrellos Ibrahim
                 </span>
             </div>
         </div>
