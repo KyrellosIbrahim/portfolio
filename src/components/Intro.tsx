@@ -3,7 +3,7 @@ import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, F
 import {useState} from "react";
 import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill} from "react-icons/ri";
 import {SiPostgresql, SiTypescript} from "react-icons/si";
-
+import Orbit from "../components/Orbit";
 const number = 95;
 const icons = [
     {
@@ -127,6 +127,8 @@ const Intro = ({ modalOpen, setModalOpen }) => {
     return (
         <>
             <div className="text-black dark:text-white justify-center text-left px-8 lg:px-36 py-16 mt-[10vh]">
+                <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
+                    <div className="flex-1">
                 <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold flex flex-col">
                     Hi,
                     <span>
@@ -207,7 +209,12 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                         <span className="icon-tooltip">Resume</span>
                     </a>
                 </div>
-
+                    </div>
+                {/* Icons in Orbit */}
+                    <div className="lg:w-1/2 xl:w-2/5">
+                        <Orbit icons={icons}/>
+                    </div>
+                </div>
                 <AnimatePresence>
                     {modalOpen && (
                         <motion.div
