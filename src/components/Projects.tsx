@@ -49,7 +49,7 @@ const Projects = () => {
 
     return (
         <div
-            className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[20vh] px-8 lg:px-36 mb-[80vh]">
+            className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[20vh] px-8 lg:px-36 xl:pr-80 mb-[80vh]">
             <span className="text-5xl md:text-6xl justify-center font-medium">
                 Here are my <span className="text-[#01a7ff] font-bold">projects</span>
             </span>
@@ -75,7 +75,7 @@ const Projects = () => {
                         <img
                             src={project.image}
                             alt={project.name}
-                            className="w-full h-64 object-cover"
+                            className="w-full h-64 xl:h-96 object-cover"
                         />
                         <div className="p-4">
                             <h4 className="text-2xl font-semibold">{project.name}</h4>
@@ -160,7 +160,7 @@ const Projects = () => {
                                 rel="noopener noreferrer"
                             >
                                 <motion.button
-                                    className=" absolute bottom-8 right-8 pt-4"
+                                    className=" absolute bottom-8 right-8 pt-4 xl:pt-0"
                                     whileHover={{scale: 1.1}}
                                     whileTap={{scale: 0.9}}
                                 >

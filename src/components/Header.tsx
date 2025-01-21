@@ -54,8 +54,8 @@ const Header = () => {
     };
 
     return (
-        <header className="sticky top-0 z-[1] mx-auto w-full max-w-7xl font-Sans font-bold uppercase text-text-primary
-           bg-neutral-100 dark:bg-[#242424] dark:text-white">
+        <header className="top-0 z-[1] mx-auto w-full max-w-7xl font-Sans font-bold uppercase text-text-primary
+            dark:text-white">
             <div className="flex flex-wrap items-center justify-between p-8">
                 <a
                     onClick={(e) => {
