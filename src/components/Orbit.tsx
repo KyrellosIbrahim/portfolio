@@ -45,7 +45,6 @@ const OrbitingIcons = ({ icons }) => {
                         >
                             <motion.div
                                 className="flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-full p-2 shadow-lg"
-                                whileHover={{ scale: 1.2 }}
                                 style={{
                                     color: icon.color,
                                     transform: 'translate(-50%, -50%)'

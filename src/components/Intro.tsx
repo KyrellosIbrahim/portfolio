@@ -129,7 +129,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
             <div className="text-black dark:text-white justify-center text-left px-8 lg:px-36 py-16 mt-[10vh]">
                 <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
                     <div className="flex-1">
-                <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold flex flex-col">
+                <span className="text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold flex flex-col">
                     Hi,
                     <span>
                         I'm <span className="text-[#01a7ff] font-bold">Kyrellos</span>
