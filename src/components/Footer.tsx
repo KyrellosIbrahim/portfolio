@@ -1,6 +1,6 @@
 import {motion} from "framer-motion";
 
-const Footer = () => {
+const Footer = ({setModalOpen}) => {
     const footer = [
         {
             id: 1,
@@ -10,7 +10,11 @@ const Footer = () => {
         {
             id: 2,
             text: "Contact",
-            link: "TODO",
+            link: "#",
+            onClick: (e) => {
+                e.preventDefault();
+                setModalOpen(true);
+            }
         },
         {
             id: 3,
@@ -33,16 +37,17 @@ const Footer = () => {
                             <motion.a
                                 key={foot.id}
                                 href={foot.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target={foot.link !== "#" ? "_blank" : ""}
+                                rel={foot.link !== "#" ? "noopener noreferrer" : ""}
                                 className="hover:text-[#01a7ff]"
+                                onClick={foot.onClick}
                             >
                                 {foot.text}
                             </motion.a>
                         ))}
                     </div>
                 </div>
-                <span className="justify-center mt-8">
+                <span className="justify-center mt-12">
                     Copyright © 2025 Kyrellos Ibrahim
                 </span>
             </div>

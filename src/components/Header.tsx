@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import { LuMenu, LuX, LuMoon, LuSun } from "react-icons/lu";
 import { AnimatePresence, motion } from "framer-motion";
 
-const NavLinks = ({ className = "" }) => {
+const NavLinks = ({ className = "", setModalOpen }) => {
     const [darkMode, setDarkMode] = useState(false);
 
     const toggleDarkMode = () => {
@@ -32,7 +32,7 @@ const NavLinks = ({ className = "" }) => {
             </motion.button>
             <div className="flex items-center md:space-x-2">
                 <a href="#projects" className="px-4 hover:text-[#01a7ff] transition-colors">Projects</a>
-                <a href="#contact" className="px-4 hover:text-[#01a7ff] transition-colors">Contact</a>
+                <a href="#contact" className="px-4 hover:text-[#01a7ff] transition-colors" onClick={() => setModalOpen(true)}>Contact</a>
                 <a href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
                    target="_blank" rel="noopener noreferrer"
                    className="px-4 hover:text-[#01a7ff] transition-colors">Resume</a>
@@ -41,7 +41,7 @@ const NavLinks = ({ className = "" }) => {
     );
 };
 
-const Header = () => {
+const Header = ({ setModalOpen }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleNavBar = () => {
@@ -67,7 +67,7 @@ const Header = () => {
                 <nav className="flex items-center">
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                        <NavLinks />
+                        <NavLinks setModalOpen={setModalOpen}/>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -99,7 +99,7 @@ const Header = () => {
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <NavLinks className="flex-col items-end space-y-4 pt-4" />
+                            <NavLinks className="flex-col items-end space-y-4 pt-4" setModalOpen={setModalOpen}/>
                         </motion.div>
                     )}
                 </AnimatePresence>
