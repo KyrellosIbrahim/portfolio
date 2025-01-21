@@ -9,6 +9,11 @@ const NavLinks = ({ className = "", setModalOpen }) => {
         setDarkMode(!darkMode);
     };
 
+    const scrollToProjects = (e) => {
+        e.preventDefault();
+        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+    };
+
     // dark mode throughout the website
     useEffect(() => {
         if (darkMode) {
@@ -31,7 +36,7 @@ const NavLinks = ({ className = "", setModalOpen }) => {
                 {darkMode ? <LuSun size={16} /> : <LuMoon size={16} />}
             </motion.button>
             <div className="flex items-center md:space-x-2">
-                <a href="#projects" className="px-4 hover:text-[#01a7ff] transition-colors">Projects</a>
+                <a href="#projects" className="px-4 hover:text-[#01a7ff] transition-colors" onClick={scrollToProjects}>Projects</a>
                 <a href="#contact" className="px-4 hover:text-[#01a7ff] transition-colors" onClick={() => setModalOpen(true)}>Contact</a>
                 <a href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
                    target="_blank" rel="noopener noreferrer"
