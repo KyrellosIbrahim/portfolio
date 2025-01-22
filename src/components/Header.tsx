@@ -62,18 +62,25 @@ const Header = ({ setModalOpen }) => {
         <header className="top-0 z-[1] mx-auto w-full max-w-7xl font-Sans font-bold uppercase text-text-primary
             dark:text-white">
             <div className="flex flex-wrap items-center justify-between p-8">
-                <a
+                <motion.a
+                    initial={{y: "-2vh", opacity: 0}}
+                    animate={{y: 0, opacity: 1}}
+                    transition={{duration: 0.4, ease: "easeInOut"}}
                     onClick={(e) => {
                     e.preventDefault();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    href="/" className="text-2xl font-semibold">Kyrellos Ibrahim</a>
+                    href="/" className="text-2xl font-semibold ease-in">Kyrellos Ibrahim</motion.a>
 
                 <nav className="flex items-center">
                     {/* Desktop Navigation */}
-                    <div className="hidden md:block">
+                    <motion.div
+                        initial={{y: "-2vh", opacity: 0}}
+                        animate={{y: 0, opacity: 1}}
+                        transition={{duration: 0.4, ease: "easeInOut"}}
+                        className="hidden md:block">
                         <NavLinks setModalOpen={setModalOpen}/>
-                    </div>
+                    </motion.div>
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">

@@ -1,6 +1,7 @@
 import {AnimatePresence, motion} from "framer-motion";
-import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, FaCss3Alt} from "react-icons/fa";
-import {useState} from "react";
+import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, FaCss3Alt, FaRegStar} from "react-icons/fa";
+// @ts-ignore
+import React, {useState} from "react";
 import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill} from "react-icons/ri";
 import {SiPostgresql, SiTypescript} from "react-icons/si";
 import Orbit from "../components/Orbit";
@@ -62,9 +63,47 @@ const icons = [
     },
 ];
 
+const orbitIcons = [
+    {
+        id: 1,
+        icon: <FaRegStar />,
+        position: 90,
+        outerRing: false
+    },
+    {
+        id: 2,
+        icon: <FaRegStar />,
+        position: 270,
+        outerRing: false
+    },
+    {
+        id: 3,
+        icon: <FaRegStar />,
+        position: 0,
+        outerRing: true
+    },
+    {
+        id: 4,
+        icon: <FaRegStar />,
+        position: 90,
+        outerRing: true
+    },
+    {
+        id: 5,
+        icon: <FaRegStar />,
+        position: 180,
+        outerRing: true
+    },
+    {
+        id: 6,
+        icon: <FaRegStar />,
+        position: 270,
+        outerRing: true
+    },
+];
+
 
 const Intro = ({ modalOpen, setModalOpen }) => {
-    //const [modalOpen, setModalOpen] = useState(false);
 
     const [contact, setContact] = useState({
         name: "",
@@ -127,12 +166,16 @@ const Intro = ({ modalOpen, setModalOpen }) => {
     return (
         <>
             <div className="text-black dark:text-white justify-center text-left px-8 lg:px-36 py-16 mt-[10vh]">
-                <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
+                <motion.div
+                    initial={{x: "-2vh", opacity: 0}}
+                    animate={{x: 0, opacity: 1}}
+                    transition={{duration: 0.3, ease: "easeInOut", delay: 0.05}}
+                    className="flex flex-col lg:flex-row items-start justify-between gap-8">
                     <div className="flex-1">
-                <span className="text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold flex flex-col">
-                    Hi,
-                    <span>
-                        I'm <span className="text-[#01a7ff] font-bold">Kyrellos</span>
+                    <span className="text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold flex flex-col">
+                        Hi,
+                        <span>
+                            I'm <span className="text-[#01a7ff] font-bold">Kyrellos</span>
                         <motion.span
                             className="pl-2.5 inline-block cursor-default pt-2"
                             animate={{rotate: 0}}
@@ -149,17 +192,17 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                         >
                             👋
                         </motion.span>
+                        </span>
                     </span>
-                </span>
                 <p className="text-black dark:text-white py-4 justify-center text-left text-lg sm:text-xl md:text-2xl max-w-xl">
-                    I'm a third-year Computer Science student at Belmont University, and I am passionate about
-                    detail-oriented design and seeking internship opportunities. Feel free to
-                    check out my projects and
+                    {"I'm a third-year Computer Science student at Belmont University, and I am passionate about " +
+                        "detail-oriented design and seeking internship opportunities. " +
+                        "Feel free to check out my projects and "}
                     <motion.span
                         onClick={() => setModalOpen(true)}
-                        className="cursor-pointer text-[#01a7ff] font-bold"
+                        className="cursor-pointer text-[#01a7ff] font-bold hover:underline"
                     >
-                        {" reach out!"}
+                        {"reach out!"}
                     </motion.span>
                 </p>
                 <div className="flex justify-left">
@@ -211,10 +254,11 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                 </div>
                     </div>
                 {/* Icons in Orbit */}
-                    <div className="lg:w-1/2 xl:w-2/5">
-                        <Orbit icons={icons}/>
+                    <div className="lg:w-1/2 xl:w-2/5 sm:w-1/4">
+                        <Orbit icons={orbitIcons}/>
                     </div>
-                </div>
+                </motion.div>
+                {/* Modal */}
                 <AnimatePresence>
                     {modalOpen && (
                         <motion.div
@@ -247,7 +291,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                         >
                                             <h2 className="text-3xl font-semibold mb-6">Here's some more info about
                                                 me.</h2>
-                                            <p className="text-xl mb-8">
+                                            <p className="text-xl mb-4">
                                                 I'm an aspiring Software Engineer based in Nashville, Tennessee.
                                                 I am currently exploring mobile and web development, and data analytics.
                                                 Some hobbies of mine include rock climbing, pickleball, and chess.
