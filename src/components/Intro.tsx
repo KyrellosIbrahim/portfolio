@@ -207,7 +207,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                         {"reach out!"}
                     </motion.span>
                 </p>
-                <div className="flex justify-left">
+                <div className="flex justify-left mb-32">
                     <a
                         href="https://github.com/KyrellosIbrahim"
                         target="_blank"
@@ -257,7 +257,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                     </div>
                 {/* Icons in Orbit */}
                     <div
-                        className="lg:w-1/2 xl:w-2/5 sm:w-1/4 lg:mb-16">
+                        className="lg:w-1/2 xl:w-2/5 sm:w-1/4 mt-[-5vh]">
                         <Orbit icons={orbitIcons}/>
                     </div>
                 </motion.div>
