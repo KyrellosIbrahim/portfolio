@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -8,10 +9,10 @@ const OrbitingIcons = ({ icons }) => {
         lg: 'lg:w-[500px] lg:h-[500px]'
     };
 
-    const iconSize = 40;
+    const iconSize = 35;
     const orbits = [
-        { radius: 225, duration: 25 }, // Outer ring
-        { radius: 150, duration: 20 }, // Inner ring
+        { radius: 150, duration: 40, rotation: -360 }, // Outer ring
+        { radius: 75, duration: 30, rotation: 360}, // Inner ring
     ];
 
     // Separate icons into inner and outer rings based on outerRing property
@@ -24,7 +25,7 @@ const OrbitingIcons = ({ icons }) => {
     const distributedIcons = distributeIcons();
 
     return (
-        <div className={`relative ${containerSizes.base} ${containerSizes.md} ${containerSizes.lg}`}>
+        <div className={`relative ${containerSizes.base} ${containerSizes.md} ${containerSizes.lg} flex flex-wrap`}>
             {/* Orbit Paths */}
             {orbits.map((orbit, index) => (
                 <div
@@ -47,7 +48,7 @@ const OrbitingIcons = ({ icons }) => {
                                 key={icon.id}
                                 className="absolute left-1/2 top-1/2"
                                 animate={{
-                                    rotate: [0, 360]
+                                    rotate: [0, orbit.rotation]
                                 }}
                                 transition={{
                                     duration: orbit.duration,
@@ -70,7 +71,7 @@ const OrbitingIcons = ({ icons }) => {
                                     }}
                                 >
                                     <div
-                                        className="flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-full p-2 shadow-lg"
+                                        className="flex items-center justify-center  rounded-full p-2 "
                                         style={{
                                             transform: 'translate(-50%, -50%)'
                                         }}

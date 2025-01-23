@@ -126,7 +126,7 @@ const Projects = () => {
                         </motion.div>
                     ))}
                 </div>
-
+                {/* modal */}
                 {selectedProject && (
                     <AnimatePresence>
                         <motion.div
@@ -143,7 +143,11 @@ const Projects = () => {
                                 transition={{duration: 0.25}}
                                 className="relative bg-white dark:bg-[#242426] rounded-lg shadow-lg p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto">
                                 <div className="flex justify-between items-center mb-4">
-                                    <h2 className="text-2xl font-semibold">{selectedProject.name}</h2>
+                                    <motion.h2
+                                        initial={{x: -20, opacity: 0}}
+                                        animate={{x: 0, opacity: 1}}
+                                        transition={{delay: 0.25}}
+                                        className="text-2xl font-semibold">{selectedProject.name}</motion.h2>
                                     <button
                                         onClick={() => setSelectedProject(null)}
                                         className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 font-semibold">
@@ -157,14 +161,22 @@ const Projects = () => {
                                     className="w-full h-64 object-cover shadow-md shadow-neutral-600 dark:shadow-neutral-950 mb-4"
                                 />
 
-                                <p className="text-black dark:text-white mb-6">
+                                <motion.p
+                                    initial={{x: 20, opacity: 0}}
+                                    animate={{x: 0, opacity: 1}}
+                                    transition={{delay: 0.25}}
+                                    className="text-black dark:text-white mb-6">
                                     {selectedProject.detailedDescription}
-                                </p>
+                                </motion.p>
 
                                 <div className="flex justify-between items-center">
-                                    <div className="flex space-x-3.5">
+                                    <motion.div
+                                        initial={{x: -20, opacity: 0}}
+                                        animate={{x: 0, opacity: 1}}
+                                        transition={{delay: 0.25}}
+                                        className="flex space-x-3.5">
                                         {renderTechIcons(selectedProject.id)}
-                                    </div>
+                                    </motion.div>
                                     <a
                                         href={selectedProject.link}
                                         target="_blank"

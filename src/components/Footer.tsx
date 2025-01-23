@@ -40,7 +40,7 @@ const Footer = ({setModalOpen}) => {
                                 href={foot.link}
                                 target={foot.link !== "#" ? "_blank" : ""}
                                 rel={foot.link !== "#" ? "noopener noreferrer" : ""}
-                                className="hover:text-[#01a7ff] p-4"
+                                className="hover:text-[#01a7ff] p-4 hover:underline"
                                 onClick={foot.onClick}
                             >
                                 {foot.text}

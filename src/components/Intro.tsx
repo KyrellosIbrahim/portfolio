@@ -1,10 +1,12 @@
 import {AnimatePresence, motion} from "framer-motion";
-import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, FaCss3Alt, FaRegStar} from "react-icons/fa";
+import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, FaCss3Alt, FaAws, FaGlobeAmericas } from "react-icons/fa";
 // @ts-ignore
 import React, {useState} from "react";
 import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill} from "react-icons/ri";
 import {SiPostgresql, SiTypescript} from "react-icons/si";
+import { IoPlanet } from "react-icons/io5";
 import Orbit from "../components/Orbit";
+
 const number = 95;
 const icons = [
     {
@@ -66,37 +68,37 @@ const icons = [
 const orbitIcons = [
     {
         id: 1,
-        icon: <FaRegStar />,
+        icon: <FaGlobeAmericas />,
         position: 90,
         outerRing: false
     },
     {
         id: 2,
-        icon: <FaRegStar />,
+        icon: <IoPlanet />,
         position: 270,
         outerRing: false
     },
     {
         id: 3,
-        icon: <FaRegStar />,
+        icon: <RiTailwindCssFill />,
         position: 0,
         outerRing: true
     },
     {
         id: 4,
-        icon: <FaRegStar />,
+        icon: <FaAws />,
         position: 90,
         outerRing: true
     },
     {
         id: 5,
-        icon: <FaRegStar />,
+        icon: <FaGithub />,
         position: 180,
         outerRing: true
     },
     {
         id: 6,
-        icon: <FaRegStar />,
+        icon: <FaReact />,
         position: 270,
         outerRing: true
     },
@@ -254,7 +256,8 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                 </div>
                     </div>
                 {/* Icons in Orbit */}
-                    <div className="lg:w-1/2 xl:w-2/5 sm:w-1/4">
+                    <div
+                        className="lg:w-1/2 xl:w-2/5 sm:w-1/4 lg:mb-16">
                         <Orbit icons={orbitIcons}/>
                     </div>
                 </motion.div>
@@ -376,7 +379,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                                                 value={contact.message}
                                                                 onChange={handleChange}
                                                                 required
-                                                                rows={4}
+                                                                rows={3}
                                                                 className="w-full px-4 py-2 rounded-lg border border-gray-300
                                                                      dark:border-gray-600 dark:bg-gray-700 dark:text-white
                                                                      focus:ring-2 focus:ring-[#01a7ff] focus:border-transparent"
