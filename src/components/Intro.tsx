@@ -2,7 +2,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, FaCss3Alt, FaAws, FaGlobeAmericas } from "react-icons/fa";
 // @ts-ignore
 import React, {useState} from "react";
-import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill} from "react-icons/ri";
+import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill, RiScrollToBottomLine} from "react-icons/ri";
 import {SiPostgresql, SiTypescript} from "react-icons/si";
 import { IoPlanet } from "react-icons/io5";
 import Orbit from "../components/Orbit";
@@ -104,6 +104,13 @@ const orbitIcons = [
     },
 ];
 
+const scrollToExperience = () => {
+    const experienceSection = document.getElementById('experience');
+    if (experienceSection) {
+        experienceSection.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 
 const Intro = ({ modalOpen, setModalOpen }) => {
 
@@ -169,6 +176,24 @@ const Intro = ({ modalOpen, setModalOpen }) => {
         <>
             <div className="text-black dark:text-white justify-center text-left px-8 lg:px-36 py-16 mt-[10vh]">
                 <motion.div
+                    className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2"
+                    animate={{y: [0, -5, 0]}}
+                    transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        ease: "easeInOut",
+                    }}
+                >
+                    <a className="px-4"
+                       onClick={scrollToExperience}>
+                        <RiScrollToBottomLine
+                            size={32}
+                            className="text-black dark:text-white opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+                        />
+                    </a>
+                </motion.div>
+                <motion.div
                     initial={{x: "-2vh", opacity: 0}}
                     animate={{x: 0, opacity: 1}}
                     transition={{duration: 0.3, ease: "easeInOut", delay: 0.05}}
@@ -196,68 +221,68 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                         </motion.span>
                         </span>
                     </span>
-                <p className="text-black dark:text-white py-4 justify-center text-left text-lg sm:text-xl md:text-2xl max-w-xl">
-                    {"I'm a third-year Computer Science student at Belmont University, and I am passionate about " +
-                        "detail-oriented design and seeking internship opportunities. " +
-                        "Feel free to check out my projects and "}
-                    <motion.span
-                        onClick={() => setModalOpen(true)}
-                        className="cursor-pointer text-[#01a7ff] font-bold hover:underline"
-                    >
-                        {"reach out!"}
-                    </motion.span>
-                </p>
-                <div className="flex justify-left mb-32">
-                    <a
-                        href="https://github.com/KyrellosIbrahim"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative"
-                    >
-                        <motion.button
-                            whileHover={{scale: 1.1}}
-                            whileTap={{scale: 0.9}}
-                            className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
-                        >
-                            <FaGithub size={24}/>
-                        </motion.button>
-                        <span className="icon-tooltip">GitHub</span>
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/kyrellosibrahim/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative"
-                    >
-                        <motion.button
-                            whileHover={{scale: 1.1}}
-                            whileTap={{scale: 0.9}}
-                            className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
-                        >
-                            <FaLinkedinIn size={24}/>
-                        </motion.button>
-                        <span className="icon-tooltip">LinkedIn</span>
-                    </a>
-                    <a
-                        href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative"
-                    >
-                        <motion.button
-                            whileHover={{scale: 1.1}}
-                            whileTap={{scale: 0.9}}
-                            className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
-                        >
-                            <FaRegFile size={24}/>
-                        </motion.button>
-                        <span className="icon-tooltip">Resume</span>
-                    </a>
-                </div>
+                        <p className="text-black dark:text-white py-4 justify-center text-left text-lg sm:text-xl md:text-2xl max-w-xl">
+                            {"I'm a third-year Computer Science student at Belmont University, and I am passionate about " +
+                                "detail-oriented design and seeking internship opportunities. " +
+                                "Feel free to check out my projects and "}
+                            <motion.span
+                                onClick={() => setModalOpen(true)}
+                                className="cursor-pointer text-[#01a7ff] font-bold hover:underline"
+                            >
+                                {"reach out!"}
+                            </motion.span>
+                        </p>
+                        <div className="flex justify-left mb-32">
+                            <a
+                                href="https://github.com/KyrellosIbrahim"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative"
+                            >
+                                <motion.button
+                                    whileHover={{scale: 1.1}}
+                                    whileTap={{scale: 0.9}}
+                                    className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
+                                >
+                                    <FaGithub size={24}/>
+                                </motion.button>
+                                <span className="icon-tooltip">GitHub</span>
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/kyrellosibrahim/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative"
+                            >
+                                <motion.button
+                                    whileHover={{scale: 1.1}}
+                                    whileTap={{scale: 0.9}}
+                                    className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
+                                >
+                                    <FaLinkedinIn size={24}/>
+                                </motion.button>
+                                <span className="icon-tooltip">LinkedIn</span>
+                            </a>
+                            <a
+                                href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative"
+                            >
+                                <motion.button
+                                    whileHover={{scale: 1.1}}
+                                    whileTap={{scale: 0.9}}
+                                    className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
+                                >
+                                    <FaRegFile size={24}/>
+                                </motion.button>
+                                <span className="icon-tooltip">Resume</span>
+                            </a>
+                        </div>
                     </div>
-                {/* Icons in Orbit */}
+                    {/* Icons in Orbit */}
                     <div
-                        className="lg:w-1/2 xl:w-2/5 sm:w-1/4 mt-[-5vh]">
+                        className="lg:w-1/2 xl:w-2/5 sm:w-1/4 mt-[-5vh] pl-12">
                         <Orbit icons={orbitIcons}/>
                     </div>
                 </motion.div>

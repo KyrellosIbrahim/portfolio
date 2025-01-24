@@ -11,7 +11,7 @@ const OrbitingIcons = ({ icons }) => {
 
     const iconSize = 35;
     const orbits = [
-        { radius: 150, duration: 40, rotation: -360 }, // Outer ring
+        { radius: 135, duration: 40, rotation: -360 }, // Outer ring
         { radius: 75, duration: 30, rotation: 360}, // Inner ring
     ];
 

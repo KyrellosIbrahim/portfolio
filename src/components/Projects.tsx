@@ -101,13 +101,13 @@ const Projects = () => {
                             initial={{opacity: 0, y: 20}}
                             whileInView={{
                                 opacity: 1,
-                                y: 50,
+                                y: 0,
                                 transition: {
                                     duration: 0.5,
                                     ease: "easeOut"
                                 }
                             }}
-                            viewport={{once: false, margin: "-100px"}}
+                            viewport={{once: false, margin: "100px"}}
                             whileHover={{scale: 1.02}}
                             onClick={() => setSelectedProject(project)}
                             className="bg-gray-100 dark:bg-[#242426] rounded-lg shadow-lg overflow-hidden border
