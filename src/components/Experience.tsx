@@ -1,10 +1,32 @@
 // @ts-ignore
-import logo from '../assets/Belmont-University-Logo-Vertical-Reversed.png'
+import belmontLogo from '../assets/Belmont-University-Logo-Vertical-Reversed.png'
+import HCALogo from '../assets/HCA_logo_primary_white-orange.png'
 import { useEffect, useRef, useState } from 'react';
 import {motion} from "framer-motion";
 const Experience = () => {
     const [isVisible, setIsVisible] = useState(false);
     const elementRef = useRef(null);
+
+    const experiences = [
+
+        {
+            id: 1,
+            company: 'HCA Healthcare',
+            title: 'Software Engineer Intern',
+            description: 'This is a placeholder description for the second experience.',
+            link: 'im not really sure what to put here',
+            logo: HCALogo
+        },
+        {
+            id: 2,
+            company: 'Belmont University',
+            title: 'Undergraduate Researcher',
+            description: 'Experimented with a Python-based simulation tool that helps to understand how light interacts with tiny particles, making cutting-edge research tools more accessible to university students.',
+            link: 'https://belmontsurfs.com/2023/07/05/kyrellos-ibrahim/',
+            logo: belmontLogo
+        },
+
+        ]
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -45,30 +67,31 @@ const Experience = () => {
                     isVisible ? 'opacity-100' : 'opacity-0'
                 }`}
             >
-                <a
-                    href="https://belmontsurfs.com/2023/07/05/kyrellos-ibrahim/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative flex flex-row items-center gap-4"
-                >
-                    <motion.img
-                        src={logo}
-                        alt="Belmont University Logo"
-                        className="object-scale-down max-h-20 sm:max-h-24 md:max-h-32 rounded-full flex-shrink-0"
-                        whileHover={{scale: 1.03}}
-                        whileTap={{scale: 0.97}}
-                    />
-                    <div className="flex flex-col pl-1">
-                        <h2 className="text-black dark:text-white font-semibold text-xl pb-2">
-                            Research Intern, Belmont University
-                        </h2>
-                        <h3 className="text-black dark:text-white text-lg max-w-[24rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[28rem]">
-                            Experimented with a Python-based simulation tool that helps to understand how light
-                            interacts with tiny particles, making cutting-edge research tools more accessible to
-                            university students.
-                        </h3>
-                    </div>
-                </a>
+                {experiences.map(experience => (
+                    <a
+                        key={experience.id}
+                        href={experience.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative flex flex-row items-center gap-4"
+                    >
+                        <motion.img
+                            src={experience.logo}
+                            alt={`${experience.company} Logo`}
+                            className="object-scale-down max-h-20 sm:max-h-24 md:max-h-32 rounded-full flex-shrink-0"
+                            whileHover={{scale: 1.03}}
+                            whileTap={{scale: 0.97}}
+                        />
+                        <div className="flex flex-col pl-1">
+                            <h2 className="text-black dark:text-white font-semibold text-xl pb-2">
+                                {experience.title}, {experience.company}
+                            </h2>
+                            <h3 className="text-black dark:text-white text-lg max-w-[24rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[28rem]">
+                                {experience.description}
+                            </h3>
+                        </div>
+                    </a>
+                ))}
             </div>
         </div>
         </section>
@@ -76,3 +99,5 @@ const Experience = () => {
 };
 
 export default Experience;
+
+
