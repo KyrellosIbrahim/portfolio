@@ -3,10 +3,13 @@ import MunchFeedPicture from "../assets/Food.jpg";
 // @ts-ignore
 import Maze from "../assets/Black Maze Wall Photo.jpg";
 // @ts-ignore
-import bookshelf from "../assets/Bookshelf.jpg"
-import {FaReact, FaJava, FaPython, FaGithub } from "react-icons/fa";
+import bookshelf from "../assets/Bookshelf.jpg";
+// @ts-ignore
+import server from "../assets/Ethernet Cables Server Rack.jpg"
+import {FaReact, FaJava, FaPython, FaGithub, FaDocker, FaLinux, FaJenkins } from "react-icons/fa";
 import { SiTypescript, SiXcode} from "react-icons/si";
 import { RiFirebaseFill, RiCloseLargeFill } from "react-icons/ri";
+import { GrMysql } from "react-icons/gr";
 import {AnimatePresence, motion} from "framer-motion";
 import {useState} from "react";
 
@@ -16,6 +19,16 @@ const Projects = () => {
     const projects = [
         {
             id: 1,
+            name: "XPerience Server",
+            image: server,
+            description:"Java server that connects to a MySQL backend on Ubuntu VM.",
+            icons: [<FaJava size={24}/>, <FaLinux size={24}/>, <GrMysql size={24}/>, <FaDocker size={24}/>, <FaJenkins size={24}/>],
+            detailedDescription: "This is a Java-based server that connects to a MySQL backend on Ubuntu VM. Implemented with" +
+                " a CI/CD pipeline using Jenkins, Maven, JUnit, and Docker with security hardening and zero-downtime deployment.",
+            link: "https://github.com/KyrellosIbrahim/XPerience"
+        },
+        {
+            id: 2,
             name: "MunchFeed App",
             image: MunchFeedPicture,
             description: "An interactive social media app where you can share your favorite foods with your friends.",
@@ -25,7 +38,7 @@ const Projects = () => {
             link: "https://github.com/minash23/MunchFeed"
         },
         {
-            id: 2,
+            id: 3,
             name: "Rat Maze Solver",
             image: Maze,
             description: "A Java program that uses A* to find the shortest possible path in a maze.",
@@ -35,7 +48,7 @@ const Projects = () => {
             link: "https://github.com/KyrellosIbrahim/mazeGame"
         },
         {
-            id: 3,
+            id: 4,
             name: "File Organization Script",
             image: bookshelf,
             description: "A Python script that parses folders and organizes files based on their type.",
@@ -49,6 +62,31 @@ const Projects = () => {
     const renderTechIcons = (projectId) => {
         switch(projectId) {
             case 1:
+                return (
+                    <>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <FaJava size={36} className="text-[#5382a1]"/>
+                            <div className="icon-tooltip">Java</div>
+                        </motion.div>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <FaLinux size={36}/>
+                            <div className="icon-tooltip">Linux</div>
+                        </motion.div>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <GrMysql size={36} className="text-[#428db2]"/>
+                            <div className="icon-tooltip">MySQL</div>
+                        </motion.div>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <FaDocker size={36} className="text-[#006db8]"/>
+                            <div className="icon-tooltip">Docker</div>
+                        </motion.div>
+                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                            <FaJenkins size={36}/>
+                            <div className="icon-tooltip">Jenkins</div>
+                        </motion.div>
+                    </>
+                )
+            case 2:
                 return (
                     <>
                         <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
@@ -69,14 +107,14 @@ const Projects = () => {
                         </motion.div>
                     </>
                 );
-            case 2:
+            case 3:
                 return (
                     <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
                         <FaJava size={36} className="text-[#5382a1]"/>
                         <div className="icon-tooltip">Java</div>
                     </motion.div>
                 );
-            case 3:
+            case 4:
                 return (
                     <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
                         <FaPython size={30} className="text-[#306998]"/>

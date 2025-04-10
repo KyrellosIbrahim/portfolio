@@ -1,5 +1,6 @@
 // @ts-ignore
 import belmontLogo from '../assets/Belmont-University-Logo-Vertical-Reversed.png'
+// @ts-ignore
 import HCALogo from '../assets/HCA_logo_primary_white-orange.png'
 import { useEffect, useRef, useState } from 'react';
 import {motion} from "framer-motion";
@@ -12,7 +13,7 @@ const Experience = () => {
         {
             id: 1,
             company: 'HCA Healthcare',
-            title: 'Software Engineer Intern',
+            title: 'Application Engineer Intern',
             description: 'This is a placeholder description for the second experience.',
             link: 'im not really sure what to put here',
             logo: HCALogo

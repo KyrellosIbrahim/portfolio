@@ -3,7 +3,8 @@ import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, F
 // @ts-ignore
 import React, {useState} from "react";
 import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill, RiScrollToBottomLine} from "react-icons/ri";
-import {SiPostgresql, SiTypescript} from "react-icons/si";
+import {SiTypescript} from "react-icons/si";
+import { GrMysql } from "react-icons/gr";
 import { IoPlanet } from "react-icons/io5";
 import Orbit from "../components/Orbit";
 
@@ -59,9 +60,9 @@ const icons = [
     },
     {
         id: 9,
-        name: "PostgreSQL",
-        icon: <SiPostgresql size={number}/>,
-        color: "#336791"
+        name: "MySQL",
+        icon: <GrMysql size={number}/>,
+        color: "#428db2"
     },
 ];
 
