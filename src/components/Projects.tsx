@@ -11,19 +11,74 @@ import { SiTypescript, SiXcode} from "react-icons/si";
 import { RiFirebaseFill, RiCloseLargeFill } from "react-icons/ri";
 import { GrMysql } from "react-icons/gr";
 import {AnimatePresence, motion} from "framer-motion";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null);
+    const [inView, setInView] = useState(false);
+    const sectionRef = useRef(null);
+
+    // Enhanced animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.1,
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.7,
+                ease: [0.25, 0.1, 0.25, 1.0], // Custom cubic-bezier for smoother motion
+            }
+        }
+    };
+
+    // Set up intersection observer for the section
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                } else {
+                    // Optional: Reset animation when scrolling away
+                    // setInView(false);
+                }
+            },
+            {
+                threshold: 0.15 // Trigger when 15% of the section is visible
+            }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
 
     const projects = [
         {
             id: 1,
             name: "XPerience Server",
             image: server,
-            description:"Java server that connects to a MySQL backend on Ubuntu VM.",
+            description:"Java server that connects to a MySQL backend on an Ubuntu VM.",
             icons: [<FaJava size={24}/>, <FaLinux size={24}/>, <GrMysql size={24}/>, <FaDocker size={24}/>, <FaJenkins size={24}/>],
-            detailedDescription: "This is a Java-based server that connects to a MySQL backend on Ubuntu VM. Implemented with" +
+            detailedDescription: "This is a Java-based server that connects to a MySQL backend on an Ubuntu VM. Implemented with" +
                 " a CI/CD pipeline using Jenkins, Maven, JUnit, and Docker with security hardening and zero-downtime deployment.",
             link: "https://github.com/KyrellosIbrahim/XPerience"
         },
@@ -59,7 +114,7 @@ const Projects = () => {
         }
     ];
 
-    const renderTechIcons = (projectId) => {
+    const renderTechIcons = (projectId: number) => {
         switch(projectId) {
             case 1:
                 return (
@@ -127,111 +182,177 @@ const Projects = () => {
     };
 
     return (
-        <section id="projects" className="projects-section">
-            <div className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[20vh] px-8 lg:px-36 xl:pr-80 mb-[40vh]">
-                <span className="text-5xl md:text-6xl justify-center font-medium">
+        <section id="projects" className="projects-section" ref={sectionRef}>
+            <div className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[12vh] px-8 lg:px-36 xl:pr-80 mb-[40vh]">
+                <motion.span
+                    className="text-5xl md:text-6xl justify-center font-medium"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                >
                     Here are my <span className="text-[#01a7ff] font-bold">projects</span>
-                </span>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-                    {projects.map((project) => (
+                </motion.span>
+
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                >
+                    {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            initial={{opacity: 0, y: 20}}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                                transition: {
-                                    duration: 0.5,
-                                    ease: "easeOut"
-                                }
+                            variants={itemVariants}
+                            custom={index}
+                            whileHover={{
+                                scale: 1.03,
+                                transition: { duration: 0.2 },
+                                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.12)"
                             }}
-                            viewport={{once: false, margin: "100px"}}
-                            whileHover={{scale: 1.02}}
                             onClick={() => setSelectedProject(project)}
                             className="bg-gray-100 dark:bg-[#242426] rounded-lg shadow-lg overflow-hidden border
-                            dark:border-neutral-800 p-4 cursor-pointer"
+                            dark:border-neutral-800 p-4 cursor-pointer transform-gpu" // Added transform-gpu for better performance
                         >
-                            <img
-                                src={project.image}
-                                alt={project.name}
-                                className="w-full h-64 xl:h-96 object-cover"
-                            />
+                            <motion.div
+                                initial={{ scale: 0.95, opacity: 0.9 }}
+                                whileInView={{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                            >
+                                <img
+                                    src={project.image}
+                                    alt={project.name}
+                                    className="w-full h-64 xl:h-96 object-cover rounded-md transform transition-transform duration-300 group-hover:scale-105"
+                                />
+                            </motion.div>
+
                             <div className="p-4">
-                                <h4 className="text-2xl font-semibold">{project.name}</h4>
-                                <p className="text-gray-600 dark:text-gray-300 mt-2">{project.description}</p>
-                                <div className="mt-2 flex flex-row space-x-3">{project.icons}</div>
+                                <motion.h4
+                                    className="text-2xl font-semibold"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.2 }}
+                                >
+                                    {project.name}
+                                </motion.h4>
+
+                                <motion.p
+                                    className="text-gray-600 dark:text-gray-300 mt-2"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.3 }}
+                                >
+                                    {project.description}
+                                </motion.p>
+
+                                <motion.div
+                                    className="mt-2 flex flex-row space-x-3"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.4 }}
+                                >
+                                    {project.icons}
+                                </motion.div>
                             </div>
                         </motion.div>
                     ))}
-                </div>
-                {/* modal */}
-                {selectedProject && (
-                    <AnimatePresence>
+                </motion.div>
+
+                {/* Modal with improved animations */}
+                <AnimatePresence>
+                    {selectedProject && (
                         <motion.div
                             onClick={() => setSelectedProject(null)}
-                            initial={{opacity: 0}}
-                            animate={{opacity: 1}}
-                            transition={{duration: 0.25}}
-                            className="fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center z-50 modal-section">
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center z-50 modal-section"
+                        >
                             <motion.div
                                 onClick={(e) => e.stopPropagation()}
-                                initial={{opacity: 0, scale: 0}}
-                                animate={{opacity: 1, scale: 1}}
-                                exit={{opacity: 0, scale: 0}}
-                                transition={{duration: 0.25}}
-                                className="relative bg-white dark:bg-[#242426] rounded-lg shadow-lg p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto">
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                                transition={{
+                                    duration: 0.4,
+                                    type: "spring",
+                                    stiffness: 300,
+                                    damping: 25
+                                }}
+                                className="relative bg-white dark:bg-[#242426] rounded-lg shadow-lg p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto"
+                            >
                                 <div className="flex justify-between items-center mb-4">
                                     <motion.h2
-                                        initial={{x: -20, opacity: 0}}
-                                        animate={{x: 0, opacity: 1}}
-                                        transition={{delay: 0.25}}
-                                        className="text-2xl font-semibold">{selectedProject.name}</motion.h2>
-                                    <button
+                                        initial={{ x: -15, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 0.2, duration: 0.4 }}
+                                        className="text-2xl font-semibold"
+                                    >
+                                        {selectedProject.name}
+                                    </motion.h2>
+                                    <motion.button
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.3 }}
                                         onClick={() => setSelectedProject(null)}
-                                        className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 font-semibold">
-                                        <RiCloseLargeFill/>
-                                    </button>
+                                        className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 font-semibold"
+                                        whileHover={{ scale: 1.2, rotate: 90 }}
+                                        whileTap={{ scale: 0.9 }}
+                                    >
+                                        <RiCloseLargeFill size={24} />
+                                    </motion.button>
                                 </div>
 
-                                <img
-                                    src={selectedProject.image}
-                                    alt={selectedProject.name}
-                                    className="w-full h-64 object-cover shadow-md shadow-neutral-600 dark:shadow-neutral-950 mb-4"
-                                />
+                                <motion.div
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.15, duration: 0.4 }}
+                                >
+                                    <img
+                                        src={selectedProject.image}
+                                        alt={selectedProject.name}
+                                        className="w-full h-64 object-cover shadow-md shadow-neutral-600 dark:shadow-neutral-950 mb-4 rounded-md"
+                                    />
+                                </motion.div>
 
                                 <motion.p
-                                    initial={{x: 20, opacity: 0}}
-                                    animate={{x: 0, opacity: 1}}
-                                    transition={{delay: 0.25}}
-                                    className="text-black dark:text-white mb-6">
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.25, duration: 0.4 }}
+                                    className="text-black dark:text-white mb-6"
+                                >
                                     {selectedProject.detailedDescription}
                                 </motion.p>
 
                                 <div className="flex justify-between items-center">
                                     <motion.div
-                                        initial={{x: -20, opacity: 0}}
-                                        animate={{x: 0, opacity: 1}}
-                                        transition={{delay: 0.25}}
-                                        className="flex space-x-3.5">
+                                        initial={{ x: -15, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 0.3, duration: 0.4 }}
+                                        className="flex space-x-3.5"
+                                    >
                                         {renderTechIcons(selectedProject.id)}
                                     </motion.div>
-                                    <a
+                                    <motion.a
+                                        initial={{ scale: 0, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{ delay: 0.35, duration: 0.4, type: "spring" }}
                                         href={selectedProject.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <motion.button
-                                            whileHover={{scale: 1.1}}
-                                            whileTap={{scale: 0.9}}
+                                            whileHover={{ scale: 1.15, rotate: 5 }}
+                                            whileTap={{ scale: 0.9 }}
                                         >
-                                            <FaGithub size={36}/>
+                                            <FaGithub size={36} />
                                         </motion.button>
-                                    </a>
+                                    </motion.a>
                                 </div>
                             </motion.div>
                         </motion.div>
-                    </AnimatePresence>
-                )}
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );
