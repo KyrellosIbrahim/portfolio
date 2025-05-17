@@ -1,9 +1,10 @@
 import {AnimatePresence, motion} from "framer-motion";
-import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaHtml5, FaCss3Alt, FaAws, FaGlobeAmericas } from "react-icons/fa";
+import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaDocker, FaGlobeAmericas } from "react-icons/fa";
 // @ts-ignore
 import React, {useState} from "react";
 import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill, RiScrollToBottomLine} from "react-icons/ri";
-import {SiTypescript} from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
+import {SiTypescript, SiDatabricks} from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { IoPlanet } from "react-icons/io5";
 import Orbit from "../components/Orbit";
@@ -18,15 +19,15 @@ const icons = [
     },
     {
         id: 2,
-        name: "CSS",
-        icon: <FaCss3Alt size={number}/>,
-        color: "#264de4"
+        name: "Azure",
+        icon: <VscAzure size={number}/>,
+        color: "#1c87c8"
     },
     {
         id: 3,
-        name: "HTML",
-        icon: <FaHtml5 size={number}/>,
-        color: "#e34c26"
+        name: "Databricks",
+        icon: <SiDatabricks size={number}/>,
+        color: "#ff3927"
     },
     {
         id: 4,
@@ -87,7 +88,7 @@ const orbitIcons = [
     },
     {
         id: 4,
-        icon: <FaAws />,
+        icon: <FaDocker />,
         position: 90,
         outerRing: true
     },
