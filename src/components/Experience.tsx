@@ -23,7 +23,8 @@ const Experience = () => {
             company: 'Belmont University',
             title: 'Undergraduate Researcher',
             description: 'Experimented with a Python-based simulation tool that helps to understand how light interacts with tiny particles, making cutting-edge research tools more accessible to university students.',
-            link: 'https://belmontsurfs.com/2023/07/05/kyrellos-ibrahim/',
+            //link: 'https://belmontsurfs.com/2023/07/05/kyrellos-ibrahim/', // This will be commented out until the website is back up and running.
+            link: '',
             logo: belmontLogo
         },
     ]
@@ -118,7 +119,7 @@ const Experience = () => {
             </span>
                 <motion.div
                     ref={elementRef}
-                    className="pb-4 flex flex-wrap items-center gap-4"
+                    className="pb-4 flex flex-col items-start gap-4"
                     initial="hidden"
                     animate={isVisible ? "visible" : "hidden"}
                     variants={containerVariants}
