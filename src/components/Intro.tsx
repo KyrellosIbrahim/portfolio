@@ -224,8 +224,8 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                         </span>
                     </span>
                         <p className="text-black dark:text-white py-4 justify-center text-left text-lg sm:text-xl md:text-2xl max-w-xl">
-                            {"I'm a third-year Computer Science student at Belmont University, and I am passionate about " +
-                                "detail-oriented design. I'm currently an Intern at HCA Healthcare. " +
+                            {"I'm a fourth-year Computer Science student at Belmont University, and I'm Interning at HCA Healthcare " +
+                                "as an Application Engineer Intern." +
                                 "Feel free to check out my projects and "}
                             <motion.span
                                 onClick={() => setModalOpen(true)}
