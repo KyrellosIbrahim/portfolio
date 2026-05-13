@@ -8,7 +8,7 @@ import {SiDatabricks, SiGooglecloud, SiApachespark, SiFastapi, SiPostgresql} fro
 import { IoPlanet } from "react-icons/io5";
 import Orbit from "../components/Orbit";
 
-const ROLES = ["Software Engineer", "Backend Developer", "Data Engineer", "Full-Stack Developer"];
+const ROLES = ["Software Engineer", "Backend Developer", "Data Engineer", "Full-Stack Developer", "API Guru"];
 
 const useTypewriter = (words: string[], typeSpeed = 75, deleteSpeed = 42, pause = 2000) => {
     const [text, setText] = useState("");
