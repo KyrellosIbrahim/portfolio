@@ -4,6 +4,7 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import CursorSpotlight from "./components/CursorSpotlight";
+import ShootingStars from "./components/ShootingStars";
 import React from "react";
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
     return (
         <>
             <CursorSpotlight />
+            <ShootingStars />
             {/* Ambient glow layer — fixed behind all content */}
             <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
                 <div className="glow-blob-1 absolute -top-48 -left-32 w-[700px] h-[700px] rounded-full bg-[#01a7ff]/[0.13] dark:bg-[#01a7ff]/[0.06] blur-[140px]" />
