@@ -30,14 +30,21 @@ const OrbitingIcons = ({ icons }) => {
             {orbits.map((orbit, index) => (
                 <div
                     key={`orbit-path-${index}`}
-                    className="absolute left-1/2 top-1/2 border border-gray-400 rounded-full"
+                    className="absolute left-1/2 top-1/2 rounded-full"
                     style={{
                         width: orbit.radius * 2,
                         height: orbit.radius * 2,
                         transform: 'translate(-50%, -50%)',
+                        border: '1px dashed rgba(1, 167, 255, 0.28)',
                     }}
                 />
             ))}
+
+            {/* Center glow node */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                <div className="w-8 h-8 rounded-full bg-[#01a7ff]/20 blur-md animate-pulse" />
+                <div className="absolute inset-0 m-auto w-3 h-3 rounded-full bg-[#01a7ff]/70" />
+            </div>
 
             {/* Orbiting Icons */}
             {orbits.map((orbit, orbitIndex) => (

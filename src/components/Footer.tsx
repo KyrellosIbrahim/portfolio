@@ -31,9 +31,9 @@ const Footer = ({ setModalOpen }) => {
   ];
 
   return (
-    <div className="w-full bg-[#242424] items-center justify-center content-center flex flex-col min-h-60">
-      <div className="w-full flex flex-col text-white text-center p-4">
-        <div className="w-full flex flex-row text-white justify-center">
+    <div className="w-full bg-neutral-200 dark:bg-[#242424] items-center justify-center content-center flex flex-col min-h-60 border-t border-neutral-300 dark:border-neutral-700">
+      <div className="w-full flex flex-col text-black dark:text-white text-center p-4">
+        <div className="w-full flex flex-row justify-center">
           <div className="w-6/12 flex justify-between flex-wrap">
             {footer.map((foot) => (
               <motion.a

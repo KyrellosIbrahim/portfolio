@@ -3,7 +3,11 @@ import { LuMenu, LuX, LuMoon, LuSun } from "react-icons/lu";
 import { AnimatePresence, motion } from "framer-motion";
 
 const NavLinks = ({ className = "", setModalOpen }) => {
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => {
+        const saved = localStorage.getItem('darkMode');
+        if (saved !== null) return saved === 'true';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    });
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
@@ -14,13 +18,9 @@ const NavLinks = ({ className = "", setModalOpen }) => {
         document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
     };
 
-    // dark mode throughout the website
     useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        localStorage.setItem('darkMode', String(darkMode));
+        document.documentElement.classList.toggle('dark', darkMode);
     }, [darkMode]);
 
     return (
@@ -30,7 +30,7 @@ const NavLinks = ({ className = "", setModalOpen }) => {
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleDarkMode}
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-white
-                transition-colors ease-in-out dark:bg-white dark:text-black"
+                transition-all ease-in-out dark:bg-white dark:text-black ring-2 ring-transparent hover:ring-[#01a7ff]/40"
                 aria-label="Toggle dark mode"
             >
                 {darkMode ? <LuSun size={16} /> : <LuMoon size={16} />}
@@ -59,9 +59,10 @@ const Header = ({ setModalOpen }) => {
     };
 
     return (
-        <header className="top-0 z-[1] mx-auto w-full max-w-7xl font-Sans font-bold uppercase text-text-primary
-            dark:text-white">
-            <div className="flex flex-wrap items-center justify-between p-8">
+        <header className="sticky top-0 z-50 w-full font-Sans font-bold uppercase text-text-primary dark:text-white
+            bg-neutral-100/80 dark:bg-[#242424]/80 backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50
+            transition-colors duration-150">
+            <div className="mx-auto flex flex-wrap items-center justify-between max-w-7xl px-8 py-5">
                 <motion.a
                     initial={{y: "-2vh", opacity: 0}}
                     animate={{y: 0, opacity: 1}}
