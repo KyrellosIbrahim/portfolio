@@ -1,21 +1,51 @@
 import {AnimatePresence, motion} from "framer-motion";
 import {FaLinkedinIn, FaGithub, FaRegFile, FaJava, FaPython, FaReact, FaDocker, FaGlobeAmericas } from "react-icons/fa";
 // @ts-ignore
-import React, {useState} from "react";
-import {RiCloseLargeFill, RiFirebaseFill, RiTailwindCssFill, RiScrollToBottomLine} from "react-icons/ri";
+import React, {useEffect, useState} from "react";
+import {RiCloseLargeFill, RiScrollToBottomLine, RiTailwindCssFill} from "react-icons/ri";
 import { VscAzure } from "react-icons/vsc";
-import {SiTypescript, SiDatabricks} from "react-icons/si";
-import { GrMysql } from "react-icons/gr";
+import {SiDatabricks, SiGooglecloud, SiApachespark, SiFastapi, SiPostgresql} from "react-icons/si";
 import { IoPlanet } from "react-icons/io5";
 import Orbit from "../components/Orbit";
+
+const ROLES = ["Software Engineer", "Backend Developer", "Data Engineer", "Full-Stack Developer"];
+
+const useTypewriter = (words: string[], typeSpeed = 75, deleteSpeed = 42, pause = 2000) => {
+    const [text, setText] = useState("");
+    const [idx, setIdx] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [isPausing, setIsPausing] = useState(false);
+
+    useEffect(() => {
+        const word = words[idx % words.length];
+        if (isPausing) {
+            const t = setTimeout(() => { setIsPausing(false); setIsDeleting(true); }, pause);
+            return () => clearTimeout(t);
+        }
+        const t = setTimeout(() => {
+            if (!isDeleting) {
+                const next = word.slice(0, text.length + 1);
+                setText(next);
+                if (next.length === word.length) setIsPausing(true);
+            } else {
+                const next = text.slice(0, -1);
+                setText(next);
+                if (next.length === 0) { setIsDeleting(false); setIdx(i => i + 1); }
+            }
+        }, isDeleting ? deleteSpeed : typeSpeed);
+        return () => clearTimeout(t);
+    }, [text, isDeleting, isPausing, idx, words, typeSpeed, deleteSpeed, pause]);
+
+    return text;
+};
 
 const number = 95;
 const icons = [
     {
         id: 1,
-        name: "TypeScript",
-        icon: <SiTypescript size={number}/>,
-        color: "#3178c6"
+        name: "GCP",
+        icon: <SiGooglecloud size={number}/>,
+        color: "#4285f4"
     },
     {
         id: 2,
@@ -31,9 +61,9 @@ const icons = [
     },
     {
         id: 4,
-        name: "Tailwind",
-        icon: <RiTailwindCssFill size={number}/>,
-        color: "#38bdf8"
+        name: "PySpark",
+        icon: <SiApachespark size={number}/>,
+        color: "#e25a1c"
     },
     {
         id: 5,
@@ -55,15 +85,15 @@ const icons = [
     },
     {
         id: 8,
-        name: "Firebase",
-        icon: <RiFirebaseFill size={number}/>,
-        color: "#ffcb2d"
+        name: "FastAPI",
+        icon: <SiFastapi size={number}/>,
+        color: "#009688"
     },
     {
         id: 9,
-        name: "MySQL",
-        icon: <GrMysql size={number}/>,
-        color: "#428db2"
+        name: "PostgreSQL",
+        icon: <SiPostgresql size={number}/>,
+        color: "#336791"
     },
 ];
 
@@ -115,6 +145,21 @@ const scrollToExperience = () => {
 
 
 const Intro = ({ modalOpen, setModalOpen }) => {
+    const roleText = useTypewriter(ROLES);
+
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setModalOpen(false);
+        };
+        if (modalOpen) {
+            document.addEventListener('keydown', handleEsc);
+            document.body.style.overflow = 'hidden';
+        }
+        return () => {
+            document.removeEventListener('keydown', handleEsc);
+            document.body.style.overflow = '';
+        };
+    }, [modalOpen, setModalOpen]);
 
     const [contact, setContact] = useState({
         name: "",
@@ -204,7 +249,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                     <span className="text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold flex flex-col">
                         Hi,
                         <span>
-                            I'm <span className="text-[#01a7ff] font-bold">Kyrellos</span>
+                            I'm <span className="gradient-text font-bold">Kyrellos</span>
                         <motion.span
                             className="pl-2.5 inline-block cursor-default pt-2"
                             animate={{rotate: 0}}
@@ -223,13 +268,16 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                         </motion.span>
                         </span>
                     </span>
+                        <div className="flex items-center gap-1.5 my-2 text-lg md:text-xl font-medium text-black/55 dark:text-white/50">
+                            <span>{roleText}</span>
+                            <span className="cursor-blink inline-block w-[2px] h-[1.1em] bg-[#01a7ff] rounded-sm align-middle" />
+                        </div>
                         <p className="text-black dark:text-white py-4 justify-center text-left text-lg sm:text-xl md:text-2xl max-w-xl">
-                            {"I'm a fourth-year Computer Science student at Belmont University, and I'm Interning at HCA Healthcare " +
-                                "as an Application Engineer Intern." +
-                                "Feel free to check out my projects and "}
+                            {"I'm a recent Computer Science graduate from Belmont University with experience as an Application Engineer Intern at HCA Healthcare. " +
+                                "I'm currently seeking full-time software engineering roles — feel free to check out my projects and "}
                             <motion.span
                                 onClick={() => setModalOpen(true)}
-                                className="cursor-pointer text-[#01a7ff] font-bold hover:underline"
+                                className="cursor-pointer gradient-text font-bold hover:underline decoration-[#01a7ff]"
                             >
                                 {"reach out!"}
                             </motion.span>
@@ -244,7 +292,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                 <motion.button
                                     whileHover={{scale: 1.1}}
                                     whileTap={{scale: 0.9}}
-                                    className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
+                                    className="bg-gradient-to-br from-[#01a7ff] to-violet-500 text-white rounded-full p-2 mx-2 shadow-md shadow-[#01a7ff]/25"
                                 >
                                     <FaGithub size={24}/>
                                 </motion.button>
@@ -259,7 +307,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                 <motion.button
                                     whileHover={{scale: 1.1}}
                                     whileTap={{scale: 0.9}}
-                                    className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
+                                    className="bg-gradient-to-br from-[#01a7ff] to-violet-500 text-white rounded-full p-2 mx-2 shadow-md shadow-[#01a7ff]/25"
                                 >
                                     <FaLinkedinIn size={24}/>
                                 </motion.button>
@@ -274,7 +322,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                 <motion.button
                                     whileHover={{scale: 1.1}}
                                     whileTap={{scale: 0.9}}
-                                    className="bg-[#01a7ff] text-white rounded-full p-2 mx-2"
+                                    className="bg-gradient-to-br from-[#01a7ff] to-violet-500 text-white rounded-full p-2 mx-2 shadow-md shadow-[#01a7ff]/25"
                                 >
                                     <FaRegFile size={24}/>
                                 </motion.button>
@@ -322,9 +370,9 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                             <h2 className="text-3xl font-semibold mb-6">Here's some more info about
                                                 me.</h2>
                                             <p className="text-xl mb-4">
-                                                I'm an aspiring Software Engineer based in Nashville, Tennessee.
-                                                I am currently exploring mobile and web development, and data analytics.
-                                                Some hobbies of mine include rock climbing, pickleball, and chess.
+                                                I'm a Software Engineer based in Nashville, Tennessee.
+                                                I enjoy working across mobile, backend development, and data analytics.
+                                                Some hobbies of mine include rock climbing, pickleball, basketball, and chess.
                                             </p>
 
                                             {/* Contact Form Section */}
@@ -333,8 +381,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                                 animate={{opacity: 1}}
                                                 transition={{delay: 0.4}}
                                             >
-                                                <h3 className="text-2xl font-semibold mb-4 text-[#01a7ff]">Get in
-                                                    Touch</h3>
+                                                <h3 className="text-2xl font-semibold mb-4 gradient-text">Get in Touch</h3>
 
                                                 {response.type === "success" && (
                                                     <div
@@ -416,8 +463,8 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                                             type="submit"
                                                             whileHover={{scale: 1.05}}
                                                             whileTap={{scale: 0.95}}
-                                                            className="w-full bg-[#01a7ff] text-white py-3 px-8 rounded-lg
-                                                                 hover:bg-[#0186cc] transition-colors text-lg font-medium"
+                                                            className="w-full bg-gradient-to-r from-[#01a7ff] to-violet-500 text-white py-3 px-8 rounded-lg
+                                                                 hover:opacity-90 transition-opacity text-lg font-medium shadow-md shadow-[#01a7ff]/20"
                                                         >
                                                             Send Message
                                                         </motion.button>
@@ -433,8 +480,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                         animate={{opacity: 1}}
                                         transition={{delay: 0.4}}
                                     >
-                                        <h3 className="text-2xl font-semibold mb-6 text-[#01a7ff]">Technologies I Work
-                                            With</h3>
+                                        <h3 className="text-2xl font-semibold mb-6 gradient-text">Technologies I Work With</h3>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-4">
                                             {icons.map((icon, index) => (
                                                 <motion.div

@@ -99,7 +99,7 @@ const Experience = () => {
                 <h2 className="text-black dark:text-white font-semibold text-xl pb-2">
                     {experience.title}, {experience.company}
                 </h2>
-                <h3 className="text-black dark:text-white text-lg max-w-[24rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[28rem]">
+                <h3 className="text-black/80 dark:text-white/80 text-base md:text-lg leading-relaxed">
                     {experience.description}
                 </h3>
                 {experience.link && (
@@ -113,33 +113,30 @@ const Experience = () => {
 
     return (
         <section id="experience">
-            <div className="justify-center flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[40vh] px-8 lg:px-36">
-            <span className="text-5xl md:text-6xl justify-center font-medium pb-16">
-                Here is my <span className="text-[#01a7ff] font-bold">experience</span>
-            </span>
+            <div className="justify-center flex flex-col w-full text-left mx-auto text-black dark:text-white mt-28 md:mt-40 px-8 lg:px-36">
+            <div className="flex flex-col items-start pb-16">
+                <span className="text-5xl md:text-6xl font-medium">
+                    Here is my <span className="gradient-text font-bold">experience</span>
+                </span>
+                <div className="accent-bar mt-4 h-[3px] w-20 rounded-full" />
+            </div>
                 <motion.div
                     ref={elementRef}
-                    className="pb-4 flex flex-col items-start gap-4"
+                    className="pb-4 flex flex-col items-stretch gap-5 w-full"
                     initial="hidden"
                     animate={isVisible ? "visible" : "hidden"}
                     variants={containerVariants}
                 >
                     {experiences.map(experience => {
-                        // Common motion props for both linked and non-linked items
-                        const motionProps = {
-                            key: experience.id,
-                            className: "group relative flex flex-row items-center gap-4 pb-8",
-                            variants: itemVariants,
-                            whileHover: {
-                                scale: 1.02,
-                                transition: { duration: 0.2 }
-                            }
-                        };
+                        const hoverEffect = { scale: 1.01, transition: { duration: 0.2 } };
+                        const cls = "group relative flex flex-row items-center gap-6 p-6 rounded-xl border border-neutral-200 dark:border-neutral-700/60 bg-white dark:bg-[#2a2a2a] shadow-sm hover:shadow-md hover:border-[#01a7ff]/30 dark:hover:border-[#01a7ff]/25 transition-all";
 
-                        // Render either a link or a div based on whether there's a link
                         return experience.link ? (
                             <motion.a
-                                {...motionProps}
+                                key={experience.id}
+                                className={cls}
+                                variants={itemVariants}
+                                whileHover={hoverEffect}
                                 href={experience.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -147,7 +144,12 @@ const Experience = () => {
                                 {renderExperienceContent(experience)}
                             </motion.a>
                         ) : (
-                            <motion.div {...motionProps}>
+                            <motion.div
+                                key={experience.id}
+                                className={cls}
+                                variants={itemVariants}
+                                whileHover={hoverEffect}
+                            >
                                 {renderExperienceContent(experience)}
                             </motion.div>
                         );

@@ -77,7 +77,13 @@ const Projects = () => {
             name: "XPerience Server",
             image: server,
             description:"Java server that connects to a MySQL backend on an Ubuntu VM.",
-            icons: [<FaJava size={24}/>, <FaLinux size={24}/>, <GrMysql size={24}/>, <FaDocker size={24}/>, <FaJenkins size={24}/>],
+            tech: [
+                { name: "Java", Icon: FaJava, color: "#5382a1" },
+                { name: "Linux", Icon: FaLinux, color: undefined },
+                { name: "MySQL", Icon: GrMysql, color: "#428db2" },
+                { name: "Docker", Icon: FaDocker, color: "#006db8" },
+                { name: "Jenkins", Icon: FaJenkins, color: undefined },
+            ],
             detailedDescription: "This is a Java-based server that connects to a MySQL backend on an Ubuntu VM. Implemented with" +
                 " a CI/CD pipeline using Jenkins, Maven, JUnit, and Docker with security hardening and zero-downtime deployment.",
             link: "https://github.com/KyrellosIbrahim/XPerience"
@@ -87,7 +93,12 @@ const Projects = () => {
             name: "MunchFeed App",
             image: MunchFeedPicture,
             description: "An interactive social media app where you can share your favorite foods with your friends.",
-            icons: [<FaReact size={24}/>, <SiTypescript size={24}/>, <RiFirebaseFill size={24}/>, <SiXcode size={24}/>],
+            tech: [
+                { name: "React Native", Icon: FaReact, color: "#26d9fd" },
+                { name: "TypeScript", Icon: SiTypescript, color: "#3178c6" },
+                { name: "Firebase", Icon: RiFirebaseFill, color: "#ffcb2d" },
+                { name: "Xcode", Icon: SiXcode, color: "#0f8de8" },
+            ],
             detailedDescription: "This is a social media app where you can upload pictures of your favorite meals" +
                 " for the day, share it with your friends, and leave comments on each other's posts and profiles.",
             link: "https://github.com/minash23/MunchFeed"
@@ -97,7 +108,9 @@ const Projects = () => {
             name: "Rat Maze Solver",
             image: Maze,
             description: "A Java program that uses A* to find the shortest possible path in a maze.",
-            icons: [<FaJava size={24}/>],
+            tech: [
+                { name: "Java", Icon: FaJava, color: "#5382a1" },
+            ],
             detailedDescription: "This Java program takes an input txt file and uses the A* algorithm to solve it, if possible. " +
                 "The maze is represented as a grid, and the program calculates the optimal path from the start point to the end point.",
             link: "https://github.com/KyrellosIbrahim/mazeGame"
@@ -107,91 +120,43 @@ const Projects = () => {
             name: "File Organization Script",
             image: bookshelf,
             description: "A Python script that parses folders and organizes files based on their type.",
-            icons: [<FaPython size={24}/>],
+            tech: [
+                { name: "Python", Icon: FaPython, color: "#306998" },
+            ],
             detailedDescription: "This Python script organizes files in a directory based on their type. The script parses " +
                 "the Downloads folder and moves files to their respective folders based on their file extension.",
             link: "https://github.com/KyrellosIbrahim/ImageFileSorter"
         }
     ];
 
-    const renderTechIcons = (projectId: number) => {
-        switch(projectId) {
-            case 1:
-                return (
-                    <>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <FaJava size={36} className="text-[#5382a1]"/>
-                            <div className="icon-tooltip">Java</div>
-                        </motion.div>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <FaLinux size={36}/>
-                            <div className="icon-tooltip">Linux</div>
-                        </motion.div>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <GrMysql size={36} className="text-[#428db2]"/>
-                            <div className="icon-tooltip">MySQL</div>
-                        </motion.div>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <FaDocker size={36} className="text-[#006db8]"/>
-                            <div className="icon-tooltip">Docker</div>
-                        </motion.div>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <FaJenkins size={36}/>
-                            <div className="icon-tooltip">Jenkins</div>
-                        </motion.div>
-                    </>
-                )
-            case 2:
-                return (
-                    <>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <FaReact size={36} className="text-[#26d9fd]"/>
-                            <div className="icon-tooltip">React Native</div>
-                        </motion.div>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <SiTypescript size={36} className="text-[#3178c6]"/>
-                            <div className="icon-tooltip">TypeScript</div>
-                        </motion.div>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <RiFirebaseFill size={36} className="text-[#ffcb2d]"/>
-                            <div className="icon-tooltip">Firebase</div>
-                        </motion.div>
-                        <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                            <SiXcode size={36} className="text-[#0f8de8]"/>
-                            <div className="icon-tooltip">Xcode</div>
-                        </motion.div>
-                    </>
-                );
-            case 3:
-                return (
-                    <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                        <FaJava size={36} className="text-[#5382a1]"/>
-                        <div className="icon-tooltip">Java</div>
-                    </motion.div>
-                );
-            case 4:
-                return (
-                    <motion.div className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
-                        <FaPython size={30} className="text-[#306998]"/>
-                        <div className="icon-tooltip">Python</div>
-                    </motion.div>
-                );
-            default:
-                return null;
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setSelectedProject(null);
+        };
+        if (selectedProject) {
+            document.addEventListener('keydown', handleEsc);
+            document.body.style.overflow = 'hidden';
         }
-    };
+        return () => {
+            document.removeEventListener('keydown', handleEsc);
+            document.body.style.overflow = '';
+        };
+    }, [selectedProject]);
 
     return (
         <section id="projects" className="projects-section" ref={sectionRef}>
-            <div className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[12vh] px-8 lg:px-36 xl:pr-80 mb-[40vh]">
-                <motion.span
-                    className="text-5xl md:text-6xl justify-center font-medium"
+            <div className="flex flex-col w-full text-left mx-auto text-black dark:text-white mt-[12vh] px-8 lg:px-36 mb-24">
+                <motion.div
+                    className="flex flex-col items-start"
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
                 >
-                    Here are my <span className="text-[#01a7ff] font-bold">projects</span>
-                </motion.span>
+                    <span className="text-5xl md:text-6xl font-medium">
+                        Here are my <span className="gradient-text font-bold">projects</span>
+                    </span>
+                    <div className="accent-bar mt-4 h-[3px] w-20 rounded-full" />
+                </motion.div>
 
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10"
@@ -207,13 +172,13 @@ const Projects = () => {
                             whileHover={{
                                 scale: 1.03,
                                 transition: { duration: 0.2 },
-                                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.12)"
+                                boxShadow: "0 10px 30px rgba(0,0,0,0.12), 0 0 0 1.5px rgba(1,167,255,0.25)"
                             }}
                             onClick={() => setSelectedProject(project)}
-                            className="bg-gray-100 dark:bg-[#242426] rounded-lg shadow-lg overflow-hidden border
-                            dark:border-neutral-800 p-4 cursor-pointer transform-gpu" // Added transform-gpu for better performance
+                            className="group bg-gray-100 dark:bg-[#242426] rounded-xl shadow-md overflow-hidden border border-neutral-200 dark:border-neutral-800 p-4 cursor-pointer transform-gpu"
                         >
                             <motion.div
+                                className="relative overflow-hidden rounded-md"
                                 initial={{ scale: 0.95, opacity: 0.9 }}
                                 whileInView={{ scale: 1, opacity: 1 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -221,8 +186,14 @@ const Projects = () => {
                                 <img
                                     src={project.image}
                                     alt={project.name}
-                                    className="w-full h-64 xl:h-96 object-cover rounded-md transform transition-transform duration-300 group-hover:scale-105"
+                                    loading="lazy"
+                                    className="w-full h-64 xl:h-80 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-105"
                                 />
+                                {/* Shimmer sweep */}
+                                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none z-10" />
+                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-md">
+                                    <span className="text-white font-semibold text-lg tracking-wide">View Details →</span>
+                                </div>
                             </motion.div>
 
                             <div className="p-4">
@@ -250,7 +221,9 @@ const Projects = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.3, delay: 0.4 }}
                                 >
-                                    {project.icons}
+                                    {project.tech.map((t) => (
+                                        <t.Icon key={t.name} size={24} style={t.color ? { color: t.color } : undefined} />
+                                    ))}
                                 </motion.div>
                             </div>
                         </motion.div>
@@ -331,7 +304,12 @@ const Projects = () => {
                                         transition={{ delay: 0.3, duration: 0.4 }}
                                         className="flex space-x-3.5"
                                     >
-                                        {renderTechIcons(selectedProject.id)}
+                                        {selectedProject.tech.map((t) => (
+                                            <motion.div key={t.name} className="relative group" whileHover={{scale: 0.9, filter: "brightness(0.7)"}}>
+                                                <t.Icon size={36} style={t.color ? { color: t.color } : undefined} />
+                                                <div className="icon-tooltip">{t.name}</div>
+                                            </motion.div>
+                                        ))}
                                     </motion.div>
                                     <motion.a
                                         initial={{ scale: 0, opacity: 0 }}
