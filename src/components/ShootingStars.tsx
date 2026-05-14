@@ -11,8 +11,8 @@ interface Star {
     width: number;
 }
 
-const SPAWN_INTERVAL_MIN = 4000;
-const SPAWN_INTERVAL_MAX = 12000;
+const SPAWN_INTERVAL_MIN = 200;
+const SPAWN_INTERVAL_MAX = 600;
 
 const ShootingStars = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
