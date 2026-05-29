@@ -38,7 +38,7 @@ const NavLinks = ({ className = "", setModalOpen }) => {
             <div className="flex items-center md:space-x-2">
                 <a href="#projects" className="px-4 hover:text-[#01a7ff] transition-colors" onClick={scrollToProjects}>Projects</a>
                 <a href="#contact" className="px-4 hover:text-[#01a7ff] transition-colors" onClick={() => setModalOpen(true)}>Contact</a>
-                <a href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
+                <a href="/Kyrellos_Ibrahim_Resume.pdf"
                    target="_blank" rel="noopener noreferrer"
                    className="px-4 hover:text-[#01a7ff] transition-colors">Resume</a>
             </div>

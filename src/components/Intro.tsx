@@ -314,7 +314,7 @@ const Intro = ({ modalOpen, setModalOpen }) => {
                                 <span className="icon-tooltip">LinkedIn</span>
                             </a>
                             <a
-                                href="https://drive.google.com/file/d/1dsBgml3P4gRB8Yj3vnwwgkFuFzho2acc/view?usp=drive_link"
+                                href="/Kyrellos_Ibrahim_Resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group relative"
