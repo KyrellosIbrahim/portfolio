@@ -1,13 +1,15 @@
 // @ts-ignore
 import MunchFeedPicture from "../assets/Food.jpg";
 // @ts-ignore
-import Maze from "../assets/Black Maze Wall Photo.jpg";
-// @ts-ignore
 import bookshelf from "../assets/Bookshelf.jpg";
 // @ts-ignore
 import server from "../assets/Ethernet Cables Server Rack.jpg"
+// @ts-ignore
+import chart from "../assets/gameUpdatesSS.png"
+// @ts-ignore
+import studying from "../assets/Students_Studying.jpg"
 import {FaReact, FaJava, FaPython, FaGithub, FaDocker, FaLinux, FaJenkins } from "react-icons/fa";
-import { SiTypescript, SiXcode} from "react-icons/si";
+import { SiTypescript, SiXcode, SiJupyter, SiPandas, SiOpenai, SiAndroid} from "react-icons/si";
 import { RiFirebaseFill, RiCloseLargeFill } from "react-icons/ri";
 import { GrMysql } from "react-icons/gr";
 import {AnimatePresence, motion} from "framer-motion";
@@ -105,27 +107,30 @@ const Projects = () => {
         },
         {
             id: 3,
-            name: "Rat Maze Solver",
-            image: Maze,
-            description: "A Java program that uses A* to find the shortest possible path in a maze.",
+            name: "Game Updates Vs Player Sentiment Analysis",
+            image: chart,
+            description: "A data science study analyzing how controversial game updates impact player engagement and community sentiment.",
             tech: [
-                { name: "Java", Icon: FaJava, color: "#5382a1" },
+                { name: "Python", Icon: FaPython, color: "#306998" },
+                { name: "Jupyter", Icon: SiJupyter, color: "#f37626" },
+                { name: "Pandas", Icon: SiPandas, color: "#150458" },
             ],
-            detailedDescription: "This Java program takes an input txt file and uses the A* algorithm to solve it, if possible. " +
-                "The maze is represented as a grid, and the program calculates the optimal path from the start point to the end point.",
-            link: "https://github.com/KyrellosIbrahim/mazeGame"
+            detailedDescription: "This research project uses time series analysis and NLP-driven sentiment analysis to measure how controversial updates in games like Overwatch 2 and RuneScape affect player counts, review scores, and community mood. Data is sourced from Steam, Reddit, and third-party player trackers.",
+            link: "https://github.com/KyrellosIbrahim/GameUpdatesVsPlayerSentiment"
         },
         {
             id: 4,
-            name: "File Organization Script",
-            image: bookshelf,
-            description: "A Python script that parses folders and organizes files based on their type.",
+            name: "Flip",
+            image: studying,
+            description: "A gamified mobile app that helps college students study together through interactive games and AI-powered quizzes.",
             tech: [
-                { name: "Python", Icon: FaPython, color: "#306998" },
+                { name: "Java", Icon: FaJava, color: "#5382a1" },
+                { name: "Firebase", Icon: RiFirebaseFill, color: "#ffcb2d" },
+                { name: "OpenAI API", Icon: SiOpenai },
+                { name: "Android", Icon: SiAndroid, color: "#34A853" },
             ],
-            detailedDescription: "This Python script organizes files in a directory based on their type. The script parses " +
-                "the Downloads folder and moves files to their respective folders based on their file extension.",
-            link: "https://github.com/KyrellosIbrahim/ImageFileSorter"
+            detailedDescription: "Flip is an Android app built to combat the college loneliness epidemic through game-based learning. Features include an AI quiz generator powered by OpenAI, a real-time leaderboard, study games like Type Race and Memory Match, scheduling, and a friends system — all backed by Firebase.",
+            link: "https://github.com/JaydenCruz2004/Flip"
         }
     ];
 
